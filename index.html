@@ -310,6 +310,10 @@
                     <option value="">All Neighbourhoods</option>
                 </select>
             </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd; height: 100%;">
+                <input type="checkbox" id="vegFilter" style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                <label for="vegFilter" style="cursor: pointer; user-select: none;">Veg/Vegan Only</label>
+            </div>
         </div>
 
         <div id="restaurantGrid" class="grid">
@@ -329,6 +333,7 @@
     const searchInput = document.getElementById('searchInput');
     const cuisineFilter = document.getElementById('cuisineFilter');
     const neighbourhoodFilter = document.getElementById('neighbourhoodFilter');
+    const vegFilter = document.getElementById('vegFilter');
     const fileInputContainer = document.getElementById('file-input-container');
     const appContent = document.getElementById('app-content');
     const statusMsg = document.getElementById('status-message');
@@ -402,7 +407,15 @@
             return;
         }
 
+        const isVegFilter = vegFilter.checked;
+
         data.forEach(r => {
+            // Pre-filter logic for display: 
+            // If veg filter is ON, we only want to show this restaurant if it has veg items (which is handled in filterRestaurants usually),
+            // BUT more importantly, we might want to highlight or only show the veg items in the card. 
+            // The prompt asks to "toggle (only V/VG options to display)". 
+            // So we pass the filter state to renderMenuPreview.
+            
             const card = document.createElement('div');
             card.className = 'card';
             
@@ -412,13 +425,32 @@
             const hoods = Array.isArray(r.neighbourhoods) ? r.neighbourhoods[0] : (r.neighbourhoods || "");
             
             // Generate Menu HTML
-            const lunchHtml = renderMenuPreview(r.Lunch, 'Lunch');
-            const dinnerHtml = renderMenuPreview(r.Dinner, 'Dinner');
+            const lunchHtml = renderMenuPreview(r.Lunch, 'Lunch', isVegFilter);
+            const dinnerHtml = renderMenuPreview(r.Dinner, 'Dinner', isVegFilter);
+
+            // If veg filter is ON and both htmls are empty (meaning no veg items), don't render card (double check filtering logic)
+            if (isVegFilter && !lunchHtml && !dinnerHtml) return;
 
             // Website/Phone info
             const contactInfo = [];
             if(r.phone) contactInfo.push(r.phone);
             if(r.website) contactInfo.push(`<a href="${r.website}" target="_blank" style="color:var(--primary-color)">Website</a>`);
+            
+            // Description truncation
+            let descHtml = '';
+            if (r.description) {
+                // Split by sentence ending punctuation (.!?) followed by space or end of string
+                const sentences = r.description.match(/[^\.!\?]+[\.!\?]+/g) || [r.description];
+                const shortDesc = sentences.slice(0, 2).join(' ');
+                const isLong = sentences.length > 2;
+                
+                descHtml = `
+                    <p class="description-text" onclick="this.classList.toggle('expanded')">
+                        <span class="short-text">${shortDesc}</span>
+                        ${isLong ? `<span class="full-text" style="display:none;">${r.description}</span> <span class="read-more" style="color:var(--primary-color); cursor:pointer; font-weight:bold;">... more</span>` : ''}
+                    </p>
+                `;
+            }
 
             card.innerHTML = `
                 <div class="card-header">
@@ -433,7 +465,7 @@
                         <div style="font-size:0.8rem; color:#666;">${contactInfo.join(' | ')}</div>
                     </div>
                     
-                    ${r.description ? `<p class="description-text">${r.description}</p>` : ''}
+                    ${descHtml}
                     
                     <div class="menus-container">
                         ${lunchHtml}
@@ -442,11 +474,35 @@
                 </div>
             `;
             
+            // Add click listener for description toggle locally to this card's description
+            if (descHtml) {
+                 const descEl = card.querySelector('.description-text');
+                 if (descEl && descEl.querySelector('.read-more')) {
+                     descEl.style.cursor = 'pointer';
+                     descEl.addEventListener('click', function(e) {
+                         e.stopPropagation(); // prevent card click if we had one
+                         const full = this.querySelector('.full-text');
+                         const short = this.querySelector('.short-text');
+                         const more = this.querySelector('.read-more');
+                         
+                         if (full.style.display === 'none') {
+                             full.style.display = 'inline';
+                             short.style.display = 'none';
+                             more.style.display = 'none';
+                         } else {
+                             full.style.display = 'none';
+                             short.style.display = 'inline';
+                             more.style.display = 'inline';
+                         }
+                     });
+                 }
+            }
+
             grid.appendChild(card);
         });
     }
 
-    function renderMenuPreview(menuData, type) {
+    function renderMenuPreview(menuData, type, onlyVeg) {
         if (!menuData) return '';
         
         const price = menuData.price ? `<span>${menuData.price}</span>` : '';
@@ -454,7 +510,15 @@
         // Helper to list items
         const listItems = (items) => {
             if (!items || items.length === 0) return '';
-            return items.map(i => `<li class="menu-item-line"><span class="item-name">${i.name}</span> <span class="dietary-micro">${getDietaryString(i)}</span></li>`).join('');
+            
+            let filteredItems = items;
+            if (onlyVeg) {
+                filteredItems = items.filter(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes');
+            }
+            
+            if (filteredItems.length === 0) return ''; // Don't show empty lists in veg mode
+
+            return filteredItems.map(i => `<li class="menu-item-line"><span class="item-name">${i.name}</span> <span class="dietary-micro">${getDietaryString(i)}</span></li>`).join('');
         };
 
         const appHtml = listItems(menuData.appetizers);
@@ -512,12 +576,14 @@
         searchInput.addEventListener('input', filterRestaurants);
         cuisineFilter.addEventListener('change', filterRestaurants);
         neighbourhoodFilter.addEventListener('change', filterRestaurants);
+        vegFilter.addEventListener('change', filterRestaurants);
     }
 
     function filterRestaurants() {
         const term = searchInput.value.toLowerCase();
         const cuisine = cuisineFilter.value;
         const hood = neighbourhoodFilter.value;
+        const isVeg = vegFilter.checked;
 
         const filtered = restaurants.filter(r => {
             const nameMatch = (r.restaurant_name || "").toLowerCase().includes(term);
@@ -531,8 +597,26 @@
             if (hood) {
                 hoodMatch = Array.isArray(r.neighbourhoods) && r.neighbourhoods.includes(hood);
             }
+            
+            let vegMatch = true;
+            if (isVeg) {
+                // Check if restaurant has ANY veg options in lunch OR dinner
+                const hasVegLunch = r.Lunch && (
+                    (r.Lunch.appetizers && r.Lunch.appetizers.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
+                    (r.Lunch.main_dishes && r.Lunch.main_dishes.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
+                    (r.Lunch.desserts && r.Lunch.desserts.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes'))
+                );
+                
+                const hasVegDinner = r.Dinner && (
+                    (r.Dinner.appetizers && r.Dinner.appetizers.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
+                    (r.Dinner.main_dishes && r.Dinner.main_dishes.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
+                    (r.Dinner.desserts && r.Dinner.desserts.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes'))
+                );
+                
+                vegMatch = hasVegLunch || hasVegDinner;
+            }
 
-            return nameMatch && cuisineMatch && hoodMatch;
+            return nameMatch && cuisineMatch && hoodMatch && vegMatch;
         });
 
         renderGrid(filtered);
