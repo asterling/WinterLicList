@@ -486,6 +486,11 @@
                 <label for="favFilter" style="cursor: pointer; user-select: none;">❤ Favorites</label>
             </div>
 
+            <div class="toggle-group">
+                <input type="checkbox" id="michelinFilter" style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
+                <label for="michelinFilter" style="cursor: pointer; user-select: none;">Michelin</label>
+            </div>
+
             <div class="view-toggles">
                 <button class="view-btn active" id="btnListView">List</button>
                 <button class="view-btn" id="btnMapView">Map</button>
@@ -541,6 +546,7 @@
     const priceFilter = document.getElementById('priceFilter');
     const vegFilter = document.getElementById('vegFilter');
     const favFilter = document.getElementById('favFilter');
+    const michelinFilter = document.getElementById('michelinFilter'); // New element
     const fileInputContainer = document.getElementById('file-input-container');
     const appContent = document.getElementById('app-content');
     const statusMsg = document.getElementById('status-message');
@@ -700,6 +706,7 @@
         priceFilter.addEventListener('change', filterRestaurants);
         vegFilter.addEventListener('change', filterRestaurants);
         favFilter.addEventListener('change', filterRestaurants);
+        michelinFilter.addEventListener('change', filterRestaurants); // New listener
     }
 
     function filterRestaurants() {
@@ -709,6 +716,7 @@
         const price = priceFilter.value;
         const isVeg = vegFilter.checked;
         const isFav = favFilter.checked;
+        const isMichelin = michelinFilter.checked; // New filter state
 
         const filtered = restaurants.filter(r => {
             const nameMatch = (r.restaurant_name || "").toLowerCase().includes(term);
@@ -752,7 +760,12 @@
                 favMatch = favorites.has(r.id);
             }
 
-            return nameMatch && cuisineMatch && hoodMatch && vegMatch && priceMatch && favMatch;
+            let michelinMatch = true; // New Michelin filter logic
+            if (isMichelin) {
+                michelinMatch = (r.description && r.description.toLowerCase().includes('michelin'));
+            }
+
+            return nameMatch && cuisineMatch && hoodMatch && vegMatch && priceMatch && favMatch && michelinMatch; // Include new filter
         });
 
         // If Map View is active, update pins
@@ -773,6 +786,7 @@
         }
 
         const isVegFilter = vegFilter.checked;
+        const isMichelinFilter = michelinFilter.checked; // Get Michelin filter state
 
         data.forEach(r => {
             const card = document.createElement('div');
@@ -788,7 +802,9 @@
             const lunchHtml = renderMenuPreview(r.Lunch, 'Lunch', isVegFilter);
             const dinnerHtml = renderMenuPreview(r.Dinner, 'Dinner', isVegFilter);
 
-            if (isVegFilter && !lunchHtml && !dinnerHtml) return;
+            // If veg filter is ON and both htmls are empty AND Michelin is not checked, then skip.
+            // If Michelin is checked, we still want to show the restaurant if it's Michelin, even if no veg items.
+            if (isVegFilter && !lunchHtml && !dinnerHtml && !(isMichelinFilter && r.description && r.description.toLowerCase().includes('michelin'))) return;
 
             // Website/Phone info
             const contactInfo = [];
@@ -844,7 +860,7 @@
                          if (full.style.display === 'none') {
                              full.style.display = 'inline';
                              short.style.display = 'none';
-                             more.style.display = 'none';
+                             more.style.display = 'inline';
                          } else {
                              full.style.display = 'none';
                              short.style.display = 'inline';
