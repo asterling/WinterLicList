@@ -45,6 +45,74 @@ This rewrites `winterlicious_menus_2026.json` from the city's live endpoint.
 
 A GitHub Action runs this on a schedule — see `.github/workflows/refresh-data.yml`.
 
+## AI enrichment (optional, local LLM)
+
+Each restaurant in the JSON can be augmented with four AI-generated fields:
+
+- `ai.standouts` — 3–5 menu items the LLM thinks are worth flagging, taken verbatim from the menu
+- `ai.vibe_tags` — 3–5 short tags from a controlled list ("date night", "casual", "upscale", "groups", "trendy", "cozy", "celebration", "hidden gem", "neighbourhood favourite", …)
+- `ai.one_liner` — a single-sentence pitch that replaces boilerplate city descriptions on the card and modal
+- `ai.dietary_summary` — *deterministic*, not LLM: counts veg / vegan / GF items from the city's flags
+
+The enrichment runs entirely **locally** via [Ollama](https://ollama.com). No API keys, no per-query cost. Results are cached by content hash in `enrichment-cache.json`, so unchanged menus skip the LLM on subsequent runs.
+
+### One-time setup
+
+1. Install Ollama — either the prebuilt installer from <https://ollama.com/download>, or build from source:
+
+   ```bash
+   git clone --depth=1 https://github.com/ollama/ollama
+   cd ollama
+   # macOS users on Xcode 15+ may need: -ldflags="-extldflags=-Wl,-ld_classic"
+   go build -o ollama .
+   ```
+
+2. Start the Ollama server (leave it running in another terminal):
+
+   ```bash
+   ollama serve
+   ```
+
+3. Pull the default model (~4.7 GB on disk, ~5 GB RAM at runtime):
+
+   ```bash
+   ollama pull qwen2.5:7b
+   ```
+
+   Smaller alternatives if you're tight on RAM (lower quality):
+
+   - `qwen2.5:3b` — ~2 GB
+   - `qwen2.5:1.5b` — ~1 GB (often hallucinates dish names; not recommended)
+
+### Running it
+
+```bash
+# Fetch + enrich in one shot
+python3 winterlic.py --enrich
+
+# Just enrich the JSON you already have
+python3 winterlic.py --no-fetch --enrich
+
+# Pick a different model
+python3 winterlic.py --enrich --model qwen2.5:3b
+
+# First N restaurants only (handy when iterating on prompts)
+python3 winterlic.py --enrich --limit 10
+
+# Force re-enrichment ignoring the cache
+python3 enrich.py menus-latest.json --force
+```
+
+Runtimes on Apple Silicon for the full 240-restaurant sweep:
+
+| Model | Steady-state | First-run total | Cached re-run |
+|---|---|---|---|
+| `qwen2.5:7b` | ~5 s/restaurant | ~20 min | seconds |
+| `qwen2.5:3b` | ~3 s/restaurant | ~12 min | seconds |
+| `qwen2.5:1.5b` | ~3 s/restaurant | ~12 min | seconds |
+
+The frontend reads `ai.*` fields if present and falls back gracefully if they're missing, so enrichment is always optional.
+
 ## Data source
 
 `https://secure.toronto.ca/c3api_data/v2/DataAccess.svc/Licious/map_data` — City of Toronto open data, no API key required.

@@ -831,8 +831,11 @@
 
         const socials = renderSocialIcons(r, "card");
 
+        const ai = r.ai || {};
         let descHtml = "";
-        if (r.description) {
+        if (ai.one_liner) {
+            descHtml = `<p class="description-text"><span class="one-liner">${escapeHtml(ai.one_liner)}</span></p>`;
+        } else if (r.description) {
             const desc = String(r.description);
             const sentences = desc.match(/[^.!?]+[.!?]+/g) || [desc];
             const shortDesc = escapeHtml(sentences.slice(0, 2).join(" "));
@@ -844,6 +847,14 @@
                     ${isLong ? `<span class="full-text" style="display:none;">${fullDesc}</span> <span class="read-more">… more</span>` : ""}
                 </p>`;
         }
+
+        const standoutsHtml = (ai.standouts && ai.standouts.length)
+            ? `<div class="standouts"><span class="standouts-label">Standouts</span> ${ai.standouts.map((s) => `<span class="standout-chip">${escapeHtml(s)}</span>`).join("")}</div>`
+            : "";
+
+        const vibeHtml = (ai.vibe_tags && ai.vibe_tags.length)
+            ? `<div class="vibe-row">${ai.vibe_tags.map((v) => `<span class="vibe-tag">${escapeHtml(v)}</span>`).join("")}</div>`
+            : "";
 
         const menusHtml = `
             <div class="menus-summary">
@@ -864,7 +875,9 @@
             </div>
             <div class="card-body">
                 <div class="badges-row">${badges.join("")}</div>
+                ${vibeHtml}
                 ${descHtml}
+                ${standoutsHtml}
                 ${menusHtml}
                 ${renderCardBooking(r)}
                 <div class="card-actions">
@@ -996,16 +1009,30 @@
         const subParts = [];
         if (Array.isArray(r.cuisines) && r.cuisines.length) subParts.push(r.cuisines.join(" · "));
         if (Array.isArray(r.neighbourhoods) && r.neighbourhoods.length) subParts.push(r.neighbourhoods[0]);
+        if (r.address) subParts.push(r.address);
         $("modalSubline").textContent = subParts.join(" · ");
-        $("modalAddress").textContent = r.address || "";
+        $("modalAddress").textContent = ""; // merged into subline above
 
         // Badges
         const badges = [];
+        const ai = r.ai || {};
         if (isMichelin(r)) badges.push(`<span class="badge michelin">⭐ Michelin</span>`);
         if (r.accessible_opt === "Yes") badges.push(`<span class="badge access">♿ Accessible</span>`);
         if (r.hotel_name) badges.push(`<span class="badge hotel">🏨 ${escapeHtml(r.hotel_name)}</span>`);
-        if (hasVegOption(r.Lunch) || hasVegOption(r.Dinner)) badges.push(`<span class="badge veg">🥬 Veg-friendly</span>`);
-        $("modalBadges").innerHTML = badges.join("");
+        if (ai.dietary_summary) {
+            badges.push(`<span class="badge veg" title="${escapeHtml(ai.dietary_summary)}">🥬 Veg/Vegan/GF options</span>`);
+        } else if (hasVegOption(r.Lunch) || hasVegOption(r.Dinner)) {
+            badges.push(`<span class="badge veg">🥬 Veg-friendly</span>`);
+        }
+        (ai.vibe_tags || []).slice(0, 3).forEach((v) => badges.push(`<span class="badge vibe">${escapeHtml(v)}</span>`));
+        $("modalBadges").innerHTML = badges.slice(0, 5).join("");
+
+        // Surface one-liner inside the hero subline if we have it (overrides cuisine/hood string)
+        if (ai.one_liner) {
+            $("modalSubline").innerHTML = `<span class="modal-oneliner">${escapeHtml(ai.one_liner)}</span>`;
+        }
+        const summaryEl = $("modalAISummary");
+        if (summaryEl) summaryEl.innerHTML = "";
 
         // Action bar
         const actions = [];

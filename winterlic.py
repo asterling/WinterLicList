@@ -9,6 +9,7 @@ script writes three files so the frontend can stay generic:
   - season.json                        metadata (label, season, year)
 """
 
+import argparse
 import json
 import os
 from datetime import datetime
@@ -64,30 +65,57 @@ def write_json(path: Path, payload) -> None:
 
 
 def main() -> None:
-    restaurants = fetch_all()
-    if not restaurants:
-        print("No data returned from API.")
-        return
+    parser = argparse.ArgumentParser(description="Fetch (and optionally enrich) Toronto Licious menus.")
+    parser.add_argument("--enrich", action="store_true", help="Run local LLM enrichment after fetching.")
+    parser.add_argument("--no-fetch", action="store_true", help="Skip fetch; only run enrichment on existing JSON.")
+    parser.add_argument("--model", default="qwen2.5:7b", help="Ollama model tag for enrichment.")
+    parser.add_argument("--limit", type=int, default=None, help="Enrich only the first N restaurants (testing).")
+    args = parser.parse_args()
+
+    if not args.no_fetch:
+        restaurants = fetch_all()
+        if not restaurants:
+            print("No data returned from API.")
+            return
+    else:
+        restaurants = None  # set below from existing file
 
     season, year = detect_season()
     label = f"{season} {year}"
     dates = FESTIVAL_DATES.get((season, year))
 
-    write_json(HERE / "menus-latest.json", restaurants)
-    write_json(HERE / f"menus-{season}-{year}.json", restaurants)
-    season_payload = {
-        "season": season,
-        "year": year,
-        "label": label,
-        "fetched_at": datetime.utcnow().isoformat() + "Z",
-    }
-    if dates:
-        start, end = dates
-        season_payload["dates_start"] = start
-        season_payload["dates_end"] = end
-    write_json(HERE / "season.json", season_payload)
+    latest_path = HERE / "menus-latest.json"
+    archive_path = HERE / f"menus-{season}-{year}.json"
 
-    print(f"Saved {len(restaurants)} restaurants for {label}.")
+    if restaurants is not None:
+        write_json(latest_path, restaurants)
+        write_json(archive_path, restaurants)
+        season_payload = {
+            "season": season,
+            "year": year,
+            "label": label,
+            "fetched_at": datetime.utcnow().isoformat() + "Z",
+        }
+        if dates:
+            start, end = dates
+            season_payload["dates_start"] = start
+            season_payload["dates_end"] = end
+        write_json(HERE / "season.json", season_payload)
+        print(f"Saved {len(restaurants)} restaurants for {label}.")
+
+    if args.enrich or args.no_fetch:
+        from enrich import enrich_restaurants
+        if not latest_path.exists():
+            print(f"Cannot enrich: {latest_path} is missing. Drop --no-fetch.")
+            return
+        cache_path = HERE / "enrichment-cache.json"
+        calls, hits, failures = enrich_restaurants(
+            latest_path, cache_path, args.model, limit=args.limit
+        )
+        print(f"Enrichment: {calls} new, {hits} cached, {failures} failed.")
+        # Mirror enriched data into the per-season archive so both stay in sync.
+        if archive_path.exists():
+            archive_path.write_bytes(latest_path.read_bytes())
 
 
 if __name__ == "__main__":
