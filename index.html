@@ -3,447 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winterlicious 2026 Menus</title>
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    
-    <style>
-        :root {
-            --primary-color: #0056b3;
-            --secondary-color: #004494;
-            --accent-color: #ffd700;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --muted-text: #666;
-            --border-radius: 8px;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --heart-color: #e74c3c;
-        }
+    <title>Winterlicious / Summerlicious — Toronto Prix-Fixe Menus, Map & Filters</title>
+    <meta name="description" content="Browse every Winterlicious and Summerlicious menu in Toronto. Faster than the official site, with a map, neighbourhood filters, vegetarian/vegan tags, Michelin highlights, and shareable links.">
+    <meta name="theme-color" content="#0056b3">
+    <link rel="canonical" href="https://asterling.github.io/WinterLicList/">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Winterlicious 2026 Menu Explorer">
+    <meta property="og:title" content="Winterlicious 2026 — Toronto Prix-Fixe Menus">
+    <meta property="og:description" content="Every Winterlicious 2026 menu in one place. Map view, filters, favorites, Michelin highlights.">
+    <meta property="og:url" content="https://asterling.github.io/WinterLicList/">
+    <meta property="og:image" content="https://asterling.github.io/WinterLicList/og-image.png">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding-bottom: 2rem;
-        }
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Winterlicious 2026 — Toronto Prix-Fixe Menus">
+    <meta name="twitter:description" content="Every Winterlicious 2026 menu in one place. Map view, filters, favorites, Michelin highlights.">
+    <meta name="twitter:image" content="https://asterling.github.io/WinterLicList/og-image.png">
 
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-        }
+    <!-- Favicon (inline SVG: snowflake + cutlery vibe) -->
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230056b3'/><text x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-size='40' font-family='Arial' fill='%23ffd700'>❄</text></svg>">
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
 
-        header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="styles.css">
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
+    <!-- Structured data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Winterlicious 2026 Menu Explorer",
+      "url": "https://asterling.github.io/WinterLicList/",
+      "description": "Unofficial Winterlicious 2026 menu browser for Toronto, with map, filters and favorites.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://asterling.github.io/WinterLicList/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
-        /* Controls / Search */
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            align-items: center;
-        }
-
-        .search-box {
-            flex: 2;
-            min-width: 250px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-        }
-
-        .filter-select {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .filter-select select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            background-color: white;
-        }
-
-        .toggle-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: white;
-            padding: 0.8rem;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            height: 100%;
-            white-space: nowrap;
-        }
-
-        .view-toggles {
-            display: flex;
-            border: 1px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .view-btn {
-            background: white;
-            color: var(--primary-color);
-            border: none;
-            padding: 0.8rem 1.2rem;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        .view-btn.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .view-btn:not(:last-child) {
-            border-right: 1px solid var(--primary-color);
-        }
-
-        /* Status / Load Section */
-        #status-message {
-            text-align: center;
-            margin: 1rem 0;
-            padding: 1rem;
-            display: none;
-            background-color: #e8f0fe;
-            border-radius: var(--border-radius);
-            color: var(--primary-color);
-        }
-        
-        .error-message {
-            background-color: #fee2e2 !important;
-            color: #b91c1c !important;
-            border: 1px solid #fecaca;
-        }
-
-        #file-input-container {
-            display: none;
-            text-align: center;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            max-width: 600px;
-        }
-
-        .btn {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* Views */
-        #map-view {
-            display: none;
-            height: 600px;
-            width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            z-index: 1; /* Ensure map is below modal */
-        }
-
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2rem;
-            align-items: start;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            border: 1px solid #eee;
-            position: relative;
-        }
-
-        .fav-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #ccc;
-            transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-
-        .fav-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .fav-btn.active {
-            color: var(--heart-color);
-        }
-
-        .card-header {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
-            padding-right: 3.5rem; /* Make room for heart */
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-subtitle {
-            font-size: 0.9rem;
-            color: var(--muted-text);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .card-body {
-            padding: 1rem;
-            flex-grow: 1;
-        }
-
-        .tag {
-            display: inline-block;
-            background-color: #e3f2fd;
-            color: var(--primary-color);
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tag.neighbourhood {
-            background-color: #f3e5f5;
-            color: #7b1fa2;
-        }
-
-        /* Menu Styling in Card */
-        .description-text {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.8rem;
-            line-height: 1.4;
-        }
-
-        .menus-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .menu-preview-section {
-            background-color: #fcfcfc;
-            border: 1px solid #f0f0f0;
-            border-radius: 6px;
-            padding: 1rem;
-        }
-
-        .menu-type-header {
-            color: var(--primary-color);
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0.3rem;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .course-block {
-            margin-bottom: 0.8rem;
-        }
-        
-        .course-block:last-child {
-            margin-bottom: 0;
-        }
-        
-        .course-block strong {
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 0.3rem;
-            font-weight: 700;
-        }
-
-        .course-block ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .menu-item-line {
-            font-size: 0.9rem;
-            margin-bottom: 0.4rem;
-            line-height: 1.3;
-            padding-left: 0.5rem;
-            border-left: 2px solid #eee;
-        }
-        
-        .item-name {
-            color: #333;
-        }
-
-        .dietary-micro {
-            font-size: 0.7rem;
-            color: #888;
-            margin-left: 4px;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000; /* Higher than map */
-            backdrop-filter: blur(3px);
-        }
-        /* Reuse previous modal styles... */
-        .modal {
-            background: white;
-            width: 90%;
-            max-width: 900px;
-            height: 90vh;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            background-color: #f8f9fa;
-        }
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            line-height: 1;
-            cursor: pointer;
-            color: #aaa;
-        }
-        .close-btn:hover { color: #333; }
-        .modal-body { padding: 0; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; }
-        
-        /* Modal Tabs logic reused */
-        .menu-tabs { display: flex; background-color: #f1f3f5; border-bottom: 1px solid #ddd; position: sticky; top: 0; }
-        .tab { flex: 1; padding: 1rem; text-align: center; cursor: pointer; font-weight: bold; color: var(--muted-text); border-bottom: 3px solid transparent; transition: all 0.2s; }
-        .tab.active { background-color: white; color: var(--primary-color); border-bottom-color: var(--primary-color); }
-        .menu-content { padding: 2rem; display: none; }
-        .menu-content.active { display: block; }
-        .menu-section { margin-bottom: 2rem; }
-        .menu-section h3 { color: var(--secondary-color); border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-bottom: 1rem; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 1px; }
-        .menu-item { margin-bottom: 1.5rem; }
-        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem; }
-        .item-name { font-weight: bold; font-size: 1.05rem; }
-        .item-desc { color: var(--muted-text); font-size: 0.95rem; font-style: italic; }
-        .dietary-tags { margin-top: 0.3rem; }
-        .dietary { display: inline-block; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 4px; background-color: #eee; color: #555; }
-        .dietary.veg { background-color: #e6fffa; color: #2c7a7b; }
-        .dietary.vegan { background-color: #f0fff4; color: #276749; }
-        .dietary.gf { background-color: #fff5f5; color: #c53030; }
-        .dietary.local { background-color: #ebf8ff; color: #2b6cb0; }
-        .price-badge { background: var(--accent-color); color: #000; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 1rem; }
-
-    </style>
-    
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 </head>
 <body>
 
 <header>
-    <div class="container">
-        <h1>Winterlicious 2026</h1>
-        <p>Explore Toronto's Culinary Celebration</p>
+    <div class="container header-inner">
+        <div class="header-text">
+            <h1 id="seasonTitle">Toronto Prix-Fixe Menus</h1>
+            <p id="seasonSubtitle">Explore Toronto's Culinary Celebration</p>
+        </div>
+        <div class="header-actions">
+            <button id="surpriseBtn" class="header-btn" title="Pick a random restaurant">🎲 Surprise me</button>
+            <button id="themeBtn" class="header-btn icon-only" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        </div>
     </div>
 </header>
 
 <main class="container">
-    
+
     <div id="status-message"></div>
 
     <div id="file-input-container">
@@ -453,17 +79,39 @@
     </div>
 
     <div id="app-content" style="display: none;">
+
+        <div id="statsBanner" class="stats-banner" hidden></div>
+
         <div class="controls">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search restaurants, cuisines...">
+                <input type="text" id="searchInput" placeholder="Search restaurants, cuisines, or dishes (e.g. 'short rib')">
             </div>
-            
+
             <div class="filter-select">
-                <select id="cuisineFilter">
-                    <option value="">All Cuisines</option>
+                <select id="sortBy" aria-label="Sort by">
+                    <option value="default">Sort: Default</option>
+                    <option value="name-asc">Name (A→Z)</option>
+                    <option value="lunch-asc">Lunch price (low→high)</option>
+                    <option value="lunch-desc">Lunch price (high→low)</option>
+                    <option value="dinner-asc">Dinner price (low→high)</option>
+                    <option value="dinner-desc">Dinner price (high→low)</option>
+                    <option value="distance" disabled>Distance (Near me)</option>
                 </select>
             </div>
-            
+
+            <select id="cuisineFilter" class="visually-hidden" aria-hidden="true" tabindex="-1">
+                <option value="">All Cuisines</option>
+            </select>
+
+            <div class="cuisine-picker">
+                <button id="cuisineTrigger" class="cuisine-trigger" type="button" aria-haspopup="dialog" aria-expanded="false">
+                    <span class="cuisine-trigger-emoji">🍽️</span>
+                    <span class="cuisine-trigger-label">All cuisines</span>
+                    <span class="cuisine-trigger-caret">▾</span>
+                </button>
+                <div id="cuisinePopover" class="cuisine-popover" role="dialog" aria-label="Choose cuisine"></div>
+            </div>
+
             <div class="filter-select">
                 <select id="neighbourhoodFilter">
                     <option value="">All Neighbourhoods</option>
@@ -475,10 +123,10 @@
                     <option value="">Any Price</option>
                 </select>
             </div>
-            
+
             <div class="toggle-group">
                 <input type="checkbox" id="vegFilter" style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
-                <label for="vegFilter" style="cursor: pointer; user-select: none;">Veg/Vegan Only</label>
+                <label for="vegFilter" style="cursor: pointer; user-select: none;">Veg/Vegan Option</label>
             </div>
 
             <div class="toggle-group">
@@ -487,9 +135,26 @@
             </div>
 
             <div class="toggle-group">
-                <input type="checkbox" id="michelinFilter" style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
-                <label for="michelinFilter" style="cursor: pointer; user-select: none;">Michelin</label>
+                <input type="checkbox" id="michelinFilter">
+                <label for="michelinFilter">Michelin</label>
             </div>
+
+            <div class="toggle-group">
+                <input type="checkbox" id="lunchFilter">
+                <label for="lunchFilter">Has Lunch</label>
+            </div>
+
+            <div class="toggle-group">
+                <input type="checkbox" id="dinnerFilter">
+                <label for="dinnerFilter">Has Dinner</label>
+            </div>
+
+            <div class="toggle-group">
+                <input type="checkbox" id="bookableFilter">
+                <label for="bookableFilter">Bookable online</label>
+            </div>
+
+            <button id="nearMeBtn" class="near-me-btn" title="Sort by distance from your location">📍 Near me</button>
 
             <div class="view-toggles">
                 <button class="view-btn active" id="btnListView">List</button>
@@ -499,24 +164,31 @@
 
         <div id="map-view"></div>
 
-        <div id="restaurantGrid" class="grid">
-            <!-- Cards will be injected here -->
+        <div class="result-bar">
+            <div id="result-count"></div>
+            <button id="resetBtn" class="link-btn" hidden>Reset filters</button>
         </div>
+
+        <div id="restaurantGrid" class="grid"></div>
     </div>
 
 </main>
 
 <div id="modalOverlay" class="modal-overlay">
     <div class="modal">
-        <div class="modal-header">
-            <div id="modalTitleArea">
+        <div class="modal-hero" id="modalHero">
+            <button class="close-btn" id="closeModal" aria-label="Close">&times;</button>
+            <div class="modal-hero-inner">
+                <div class="modal-hero-emoji" id="modalEmoji"></div>
                 <h2 id="modalTitle">Restaurant Name</h2>
-                <p id="modalAddress" style="color: #666; margin-top: 0.2rem;"></p>
-                <div id="modalLinks" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                <div id="modalSubline" class="modal-subline"></div>
+                <p id="modalAddress" class="modal-address"></p>
+                <div id="modalBadges" class="badges-row"></div>
             </div>
-            <button class="close-btn" id="closeModal">&times;</button>
         </div>
-        
+
+        <div class="modal-action-bar" id="modalActions"></div>
+
         <div class="menu-tabs">
             <div class="tab" id="tabLunch" data-target="lunchContent">Lunch</div>
             <div class="tab" id="tabDinner" data-target="dinnerContent">Dinner</div>
@@ -529,567 +201,7 @@
     </div>
 </div>
 
-<script>
-    // State
-    let restaurants = [];
-    const jsonFileName = 'winterlicious_menus_2026.json';
-    let favorites = new Set();
-    let map = null;
-    let markers = [];
-
-    // Elements
-    const grid = document.getElementById('restaurantGrid');
-    const mapView = document.getElementById('map-view');
-    const searchInput = document.getElementById('searchInput');
-    const cuisineFilter = document.getElementById('cuisineFilter');
-    const neighbourhoodFilter = document.getElementById('neighbourhoodFilter');
-    const priceFilter = document.getElementById('priceFilter');
-    const vegFilter = document.getElementById('vegFilter');
-    const favFilter = document.getElementById('favFilter');
-    const michelinFilter = document.getElementById('michelinFilter'); // New element
-    const fileInputContainer = document.getElementById('file-input-container');
-    const appContent = document.getElementById('app-content');
-    const statusMsg = document.getElementById('status-message');
-    const modalOverlay = document.getElementById('modalOverlay');
-    const closeModal = document.getElementById('closeModal');
-
-    // Init
-    window.addEventListener('DOMContentLoaded', async () => {
-        loadFavorites();
-        try {
-            await loadData(jsonFileName);
-        } catch (e) {
-            console.warn("Auto-fetch failed:", e);
-            showFilePicker();
-        }
-    });
-
-    // File Picker Fallback
-    document.getElementById('jsonFile').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const data = JSON.parse(e.target.result);
-                initApp(data);
-                fileInputContainer.style.display = 'none';
-                statusMsg.style.display = 'none';
-            } catch (err) {
-                showError("Invalid JSON file.");
-            }
-        };
-        reader.readAsText(file);
-    });
-
-    // View Toggles
-    const btnListView = document.getElementById('btnListView');
-    const btnMapView = document.getElementById('btnMapView');
-
-    btnListView.addEventListener('click', () => {
-        btnListView.classList.add('active');
-        btnMapView.classList.remove('active');
-        grid.style.display = 'grid';
-        mapView.style.display = 'none';
-    });
-
-    btnMapView.addEventListener('click', () => {
-        btnMapView.classList.add('active');
-        btnListView.classList.remove('active');
-        grid.style.display = 'none';
-        mapView.style.display = 'block';
-        initMap();
-        filterRestaurants(); // Re-trigger filter to update map pins
-    });
-
-    async function loadData(url) {
-        statusMsg.textContent = "Loading menus...";
-        statusMsg.style.display = 'block';
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Fetch failed");
-        const data = await response.json();
-        initApp(data);
-        statusMsg.style.display = 'none';
-    }
-
-    function showFilePicker() {
-        statusMsg.textContent = "Could not auto-load data. Please use the file picker below.";
-        statusMsg.classList.add('error-message');
-        fileInputContainer.style.display = 'block';
-    }
-
-    function showError(msg) {
-        statusMsg.textContent = msg;
-        statusMsg.classList.add('error-message');
-        statusMsg.style.display = 'block';
-    }
-
-    function initApp(data) {
-        restaurants = data;
-        populateFilters();
-        renderGrid(restaurants);
-        appContent.style.display = 'block';
-    }
-
-    // --- Logic ---
-
-    function loadFavorites() {
-        const saved = localStorage.getItem('winterlicious_favs');
-        if (saved) {
-            favorites = new Set(JSON.parse(saved));
-        }
-    }
-
-    function toggleFavorite(id) {
-        if (favorites.has(id)) {
-            favorites.delete(id);
-        } else {
-            favorites.add(id);
-        }
-        localStorage.setItem('winterlicious_favs', JSON.stringify([...favorites]));
-        
-        // Re-render
-        filterRestaurants();
-    }
-
-    function populateFilters() {
-        const cuisines = new Set();
-        const hoods = new Set();
-        const prices = new Set();
-
-        restaurants.forEach(r => {
-            if (Array.isArray(r.cuisines)) r.cuisines.forEach(c => cuisines.add(c));
-            if (Array.isArray(r.neighbourhoods)) r.neighbourhoods.forEach(n => hoods.add(n));
-            
-            // Extract prices
-            if (r.Lunch && r.Lunch.price) prices.add("Lunch " + r.Lunch.price);
-            if (r.Dinner && r.Dinner.price) prices.add("Dinner " + r.Dinner.price);
-        });
-
-        const sortedCuisines = Array.from(cuisines).sort();
-        const sortedHoods = Array.from(hoods).sort();
-        // Sort prices naturally
-        const sortedPrices = Array.from(prices).sort((a,b) => {
-            // "Lunch $27" vs "Dinner $35"
-            // Sort by type then price
-            const typeA = a.split(' ')[0];
-            const typeB = b.split(' ')[0];
-            if(typeA !== typeB) return typeB.localeCompare(typeA); // Lunch first? No, L comes after D. Let's do Lunch first manually.
-            return a.localeCompare(b, undefined, {numeric: true});
-        });
-
-        sortedCuisines.forEach(c => {
-            const opt = document.createElement('option');
-            opt.value = c;
-            opt.textContent = c;
-            cuisineFilter.appendChild(opt);
-        });
-
-        sortedHoods.forEach(h => {
-            const opt = document.createElement('option');
-            opt.value = h;
-            opt.textContent = h;
-            neighbourhoodFilter.appendChild(opt);
-        });
-
-        sortedPrices.forEach(p => {
-            const opt = document.createElement('option');
-            opt.value = p;
-            opt.textContent = p;
-            priceFilter.appendChild(opt);
-        });
-
-        // Attach listeners
-        searchInput.addEventListener('input', filterRestaurants);
-        cuisineFilter.addEventListener('change', filterRestaurants);
-        neighbourhoodFilter.addEventListener('change', filterRestaurants);
-        priceFilter.addEventListener('change', filterRestaurants);
-        vegFilter.addEventListener('change', filterRestaurants);
-        favFilter.addEventListener('change', filterRestaurants);
-        michelinFilter.addEventListener('change', filterRestaurants); // New listener
-    }
-
-    function filterRestaurants() {
-        const term = searchInput.value.toLowerCase();
-        const cuisine = cuisineFilter.value;
-        const hood = neighbourhoodFilter.value;
-        const price = priceFilter.value;
-        const isVeg = vegFilter.checked;
-        const isFav = favFilter.checked;
-        const isMichelin = michelinFilter.checked; // New filter state
-
-        const filtered = restaurants.filter(r => {
-            const nameMatch = (r.restaurant_name || "").toLowerCase().includes(term);
-            
-            let cuisineMatch = true;
-            if (cuisine) {
-                cuisineMatch = Array.isArray(r.cuisines) && r.cuisines.includes(cuisine);
-            }
-
-            let hoodMatch = true;
-            if (hood) {
-                hoodMatch = Array.isArray(r.neighbourhoods) && r.neighbourhoods.includes(hood);
-            }
-            
-            let priceMatch = true;
-            if (price) {
-                // price format "Lunch $27"
-                const [pType, pVal] = price.split(' ');
-                if (pType === 'Lunch') priceMatch = (r.Lunch && r.Lunch.price === pVal);
-                else if (pType === 'Dinner') priceMatch = (r.Dinner && r.Dinner.price === pVal);
-            }
-
-            let vegMatch = true;
-            if (isVeg) {
-                const hasVegLunch = r.Lunch && (
-                    (r.Lunch.appetizers && r.Lunch.appetizers.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
-                    (r.Lunch.main_dishes && r.Lunch.main_dishes.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
-                    (r.Lunch.desserts && r.Lunch.desserts.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes'))
-                );
-                
-                const hasVegDinner = r.Dinner && (
-                    (r.Dinner.appetizers && r.Dinner.appetizers.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
-                    (r.Dinner.main_dishes && r.Dinner.main_dishes.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes')) ||
-                    (r.Dinner.desserts && r.Dinner.desserts.some(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes'))
-                );
-                vegMatch = hasVegLunch || hasVegDinner;
-            }
-
-            let favMatch = true;
-            if (isFav) {
-                favMatch = favorites.has(r.id);
-            }
-
-            let michelinMatch = true; // New Michelin filter logic
-            if (isMichelin) {
-                michelinMatch = (r.description && r.description.toLowerCase().includes('michelin'));
-            }
-
-            return nameMatch && cuisineMatch && hoodMatch && vegMatch && priceMatch && favMatch && michelinMatch; // Include new filter
-        });
-
-        // If Map View is active, update pins
-        if (mapView.style.display === 'block') {
-            updateMap(filtered);
-        } else {
-            renderGrid(filtered);
-        }
-    }
-
-    // --- Rendering Grid ---
-
-    function renderGrid(data) {
-        grid.innerHTML = '';
-        if (data.length === 0) {
-            grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666;">No restaurants found matching your criteria.</p>';
-            return;
-        }
-
-        const isVegFilter = vegFilter.checked;
-        const isMichelinFilter = michelinFilter.checked; // Get Michelin filter state
-
-        data.forEach(r => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            
-            // Safe Accessors
-            const name = r.restaurant_name || "Unknown Restaurant";
-            const cuisines = Array.isArray(r.cuisines) ? r.cuisines.join(", ") : r.cuisines || "";
-            const hoods = Array.isArray(r.neighbourhoods) ? r.neighbourhoods[0] : (r.neighbourhoods || "");
-            const isFavorite = favorites.has(r.id);
-            
-            // Generate Menu HTML
-            const lunchHtml = renderMenuPreview(r.Lunch, 'Lunch', isVegFilter);
-            const dinnerHtml = renderMenuPreview(r.Dinner, 'Dinner', isVegFilter);
-
-            // If veg filter is ON and both htmls are empty AND Michelin is not checked, then skip.
-            // If Michelin is checked, we still want to show the restaurant if it's Michelin, even if no veg items.
-            if (isVegFilter && !lunchHtml && !dinnerHtml && !(isMichelinFilter && r.description && r.description.toLowerCase().includes('michelin'))) return;
-
-            // Website/Phone info
-            const contactInfo = [];
-            if(r.phone) contactInfo.push(r.phone);
-            if(r.website) contactInfo.push(`<a href="${r.website}" target="_blank" style="color:var(--primary-color)">Website</a>`);
-            
-            // Description truncation logic
-            let descHtml = '';
-            if (r.description) {
-                const sentences = r.description.match(/[^\.!\?]+[\.!\?]+/g) || [r.description];
-                const shortDesc = sentences.slice(0, 2).join(' ');
-                const isLong = sentences.length > 2;
-                
-                descHtml = `
-                    <p class="description-text">
-                        <span class="short-text">${shortDesc}</span>
-                        ${isLong ? `<span class="full-text" style="display:none;">${r.description}</span> <span class="read-more" style="color:var(--primary-color); cursor:pointer; font-weight:bold;">... more</span>` : ''}
-                    </p>
-                `;
-            }
-
-            card.innerHTML = `
-                <button class="fav-btn ${isFavorite ? 'active' : ''}" onclick="toggleFavorite('${r.id}')">
-                    ${isFavorite ? '❤' : '♡'}
-                </button>
-                <div class="card-header">
-                    <div class="card-title">${name}</div>
-                    <div class="card-subtitle">
-                        <span>${cuisines}</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div style="margin-bottom: 0.5rem; display:flex; justify-content:space-between; align-items:center;">
-                        <div>${hoods ? `<span class="tag neighbourhood">${hoods}</span>` : ''}</div>
-                        <div style="font-size:0.8rem; color:#666;">${contactInfo.join(' | ')}</div>
-                    </div>
-                    ${descHtml}
-                    <div class="menus-container">
-                        ${lunchHtml}
-                        ${dinnerHtml}
-                    </div>
-                </div>
-            `;
-            
-            // Re-attach listeners for read-more
-            if (descHtml) {
-                 const descEl = card.querySelector('.description-text');
-                 if (descEl && descEl.querySelector('.read-more')) {
-                     descEl.addEventListener('click', function(e) {
-                         const full = this.querySelector('.full-text');
-                         const short = this.querySelector('.short-text');
-                         const more = this.querySelector('.read-more');
-                         if (full.style.display === 'none') {
-                             full.style.display = 'inline';
-                             short.style.display = 'none';
-                             more.style.display = 'inline';
-                         } else {
-                             full.style.display = 'none';
-                             short.style.display = 'inline';
-                             more.style.display = 'inline';
-                         }
-                     });
-                 }
-            }
-
-            grid.appendChild(card);
-        });
-    }
-
-    function renderMenuPreview(menuData, type, onlyVeg) {
-        if (!menuData) return '';
-        const price = menuData.price ? `<span>${menuData.price}</span>` : '';
-        const listItems = (items) => {
-            if (!items || items.length === 0) return '';
-            let filteredItems = items;
-            if (onlyVeg) {
-                filteredItems = items.filter(i => i.vegetarian_opt === 'Yes' || i.vegan_opt === 'Yes');
-            }
-            if (filteredItems.length === 0) return '';
-            return filteredItems.map(i => `<li class="menu-item-line"><span class="item-name">${i.name}</span> <span class="dietary-micro">${getDietaryString(i)}</span></li>`).join('');
-        };
-        const appHtml = listItems(menuData.appetizers);
-        const mainHtml = listItems(menuData.main_dishes);
-        const dessHtml = listItems(menuData.desserts);
-        if (!appHtml && !mainHtml && !dessHtml) return '';
-        return `
-            <div class="menu-preview-section">
-                <h4 class="menu-type-header"><span>${type}</span> ${price}</h4>
-                ${appHtml ? `<div class="course-block"><strong>Appetizers</strong><ul>${appHtml}</ul></div>` : ''}
-                ${mainHtml ? `<div class="course-block"><strong>Mains</strong><ul>${mainHtml}</ul></div>` : ''}
-                ${dessHtml ? `<div class="course-block"><strong>Desserts</strong><ul>${dessHtml}</ul></div>` : ''}
-            </div>
-        `;
-    }
-    
-    function getDietaryString(item) {
-        let tags = [];
-        if (item.vegetarian_opt === 'Yes') tags.push('V');
-        if (item.vegan_opt === 'Yes') tags.push('Vg');
-        if (item.gluten_opt === 'Yes') tags.push('GF');
-        return tags.length ? `(${tags.join(',')})` : '';
-    }
-
-    // --- Map Logic ---
-
-    function initMap() {
-        if (map) {
-            map.invalidateSize();
-            return;
-        }
-
-        // Default center Toronto
-        map = L.map('map-view').setView([43.6532, -79.3832], 12);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-    }
-
-    function updateMap(data) {
-        if (!map) return;
-        
-        // Clear existing markers
-        markers.forEach(m => map.removeLayer(m));
-        markers = [];
-
-        // Bounds
-        const bounds = L.latLngBounds();
-
-        data.forEach(r => {
-            if (r.geo_lat && r.geo_long) {
-                const lat = parseFloat(r.geo_lat);
-                const lng = parseFloat(r.geo_long);
-
-                if (!isNaN(lat) && !isNaN(lng)) {
-                    const marker = L.marker([lat, lng])
-                        .addTo(map)
-                        .bindPopup(`
-                            <div style="min-width: 150px; text-align: center;">
-                                <strong>${r.restaurant_name}</strong><br>
-                                ${r.address || ''}<br><br>
-                                <button onclick="openModalById('${r.id}')" style="background:var(--primary-color); color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">View Menu</button>
-                            </div>
-                        `);
-                    markers.push(marker);
-                    bounds.extend([lat, lng]);
-                }
-            }
-        });
-
-        if (markers.length > 0) {
-            map.fitBounds(bounds, { padding: [50, 50] });
-        }
-    }
-
-    // Global helper for popup click
-    window.openModalById = function(id) {
-        const r = restaurants.find(x => x.id === id);
-        if (r) openModal(r);
-    };
-
-    // --- Modal Logic (reused) ---
-
-    function openModal(r) {
-        document.getElementById('modalTitle').textContent = r.restaurant_name;
-        document.getElementById('modalAddress').textContent = r.address || "";
-        const linksDiv = document.getElementById('modalLinks');
-        linksDiv.innerHTML = '';
-        if (r.website) linksDiv.innerHTML += `<a href="${r.website}" target="_blank" style="margin-right: 15px;">Website</a>`;
-        if (r.phone) linksDiv.innerHTML += `<span>📞 ${r.phone}</span>`;
-        renderMenuSection('lunchContent', r.Lunch, 'Lunch');
-        renderMenuSection('dinnerContent', r.Dinner, 'Dinner');
-        const tabLunch = document.getElementById('tabLunch');
-        const tabDinner = document.getElementById('tabDinner');
-        const lunchContent = document.getElementById('lunchContent');
-        const dinnerContent = document.getElementById('dinnerContent');
-        tabLunch.classList.remove('active');
-        tabDinner.classList.remove('active');
-        lunchContent.classList.remove('active');
-        dinnerContent.classList.remove('active');
-        if (r.Lunch) {
-            tabLunch.classList.add('active');
-            lunchContent.classList.add('active');
-            tabLunch.style.display = 'block';
-        } else {
-            tabLunch.style.display = 'none';
-        }
-        if (r.Dinner) {
-            if (!r.Lunch) {
-                tabDinner.classList.add('active');
-                dinnerContent.classList.add('active');
-            }
-            tabDinner.style.display = 'block';
-        } else {
-            tabDinner.style.display = 'none';
-        }
-        if (!r.Lunch && !r.Dinner) {
-            lunchContent.innerHTML = "<p>No menu information available.</p>";
-            lunchContent.classList.add('active');
-        }
-        modalOverlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function renderMenuSection(containerId, menuData, type) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = '';
-        if (!menuData) {
-            container.innerHTML = `<p style="text-align:center; margin-top: 2rem; color:#666;">No ${type} menu available.</p>`;
-            return;
-        }
-        if (menuData.price) {
-            const priceDiv = document.createElement('div');
-            priceDiv.style.textAlign = 'center';
-            priceDiv.innerHTML = `<span class="price-badge">${type} - ${menuData.price}</span>`;
-            container.appendChild(priceDiv);
-        }
-        const sections = [
-            { key: 'appetizers', title: 'Appetizers' },
-            { key: 'main_dishes', title: 'Main Dishes' },
-            { key: 'desserts', title: 'Desserts' }
-        ];
-        sections.forEach(sec => {
-            if (menuData[sec.key] && menuData[sec.key].length > 0) {
-                const secDiv = document.createElement('div');
-                secDiv.className = 'menu-section';
-                secDiv.innerHTML = `<h3>${sec.title}</h3>`;
-                menuData[sec.key].forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'menu-item';
-                    let dietaryHtml = '';
-                    if (item.vegetarian_opt === 'Yes') dietaryHtml += `<span class="dietary veg">Veg</span>`;
-                    if (item.vegan_opt === 'Yes') dietaryHtml += `<span class="dietary vegan">Vegan</span>`;
-                    if (item.gluten_opt === 'Yes') dietaryHtml += `<span class="dietary gf">GF</span>`;
-                    if (item.local_opt === 'Yes') dietaryHtml += `<span class="dietary local">Local</span>`;
-                    itemDiv.innerHTML = `
-                        <div class="item-header">
-                            <span class="item-name">${item.name}</span>
-                        </div>
-                        <div class="item-desc">${item.description || ""}</div>
-                        <div class="dietary-tags">${dietaryHtml}</div>
-                    `;
-                    secDiv.appendChild(itemDiv);
-                });
-                container.appendChild(secDiv);
-            }
-        });
-        let notesHTML = '';
-        ['appetizers_notes', 'main_dishes_notes', 'desserts_notes'].forEach(k => {
-            if (menuData[k]) {
-                notesHTML += `<p style="font-size: 0.85rem; color: #777; margin-top: 1rem; font-style: italic;">* ${menuData[k]}</p>`;
-            }
-        });
-        if (notesHTML) {
-             const notesDiv = document.createElement('div');
-             notesDiv.style.borderTop = "1px dashed #ddd";
-             notesDiv.style.marginTop = "2rem";
-             notesDiv.style.paddingTop = "1rem";
-             notesDiv.innerHTML = notesHTML;
-             container.appendChild(notesDiv);
-        }
-    }
-
-    closeModal.addEventListener('click', () => {
-        modalOverlay.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            modalOverlay.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    });
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const targetId = tab.dataset.target;
-            const container = document.getElementById(targetId);
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.menu-content').forEach(c => c.classList.remove('active'));
-            tab.classList.add('active');
-            container.classList.add('active');
-        });
-    });
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
