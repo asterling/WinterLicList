@@ -2,8 +2,7 @@
   "season": "Winterlicious",
   "year": 2026,
   "label": "Winterlicious 2026",
+  "fetched_at": "2026-05-15T10:48:15.342792Z",
   "dates_start": "2026-01-30",
-  "dates_end": "2026-02-12",
-  "dates_label": "Jan 30 – Feb 12, 2026",
-  "fetched_at": "2026-01-01T00:00:00Z"
+  "dates_end": "2026-02-12"
 }
