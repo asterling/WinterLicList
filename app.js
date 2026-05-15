@@ -84,6 +84,7 @@
     let lastFiltered = [];
     let userPos = null; // {lat, lng} when geolocation granted
     let seasonMeta = null;
+    let activeVibes = new Set(); // multi-select vibe filter
 
     // ---------- DOM ----------
     const $ = (id) => document.getElementById(id);
@@ -108,6 +109,7 @@
     const statsBanner = $("statsBanner");
     const cuisineTrigger = $("cuisineTrigger");
     const cuisinePopover = $("cuisinePopover");
+    const vibeFilterChips = $("vibeFilterChips");
     const fileInputContainer = $("file-input-container");
     const appContent = $("app-content");
     const statusMsg = $("status-message");
@@ -566,7 +568,13 @@
         if (params.get("dinner") === "1") dinnerFilter.checked = true;
         if (params.get("bookable") === "1") bookableFilter.checked = true;
         if (params.has("sort") && params.get("sort") !== "distance") sortBy.value = params.get("sort");
+        if (params.has("vibes")) {
+            params.get("vibes").split(",").map(decodeURIComponent).forEach((v) => {
+                if (v) activeVibes.add(v);
+            });
+        }
         updateActiveChip();
+        renderActiveVibes();
         if (params.get("view") === "map") {
             // delay till app is visible
             requestAnimationFrame(() => switchView("map"));
@@ -586,6 +594,7 @@
         if (dinnerFilter.checked) params.set("dinner", "1");
         if (bookableFilter.checked) params.set("bookable", "1");
         if (sortBy.value && sortBy.value !== "default" && sortBy.value !== "distance") params.set("sort", sortBy.value);
+        if (activeVibes.size) params.set("vibes", [...activeVibes].map(encodeURIComponent).join(","));
         if (currentView === "map") params.set("view", "map");
         const qs = params.toString();
         const newUrl = window.location.pathname + (qs ? "?" + qs : "") + window.location.hash;
@@ -699,7 +708,8 @@
             michelinFilter.checked ||
             lunchFilter.checked ||
             dinnerFilter.checked ||
-            bookableFilter.checked
+            bookableFilter.checked ||
+            activeVibes.size
         );
     }
 
@@ -715,9 +725,36 @@
         dinnerFilter.checked = false;
         bookableFilter.checked = false;
         sortBy.value = "default";
+        activeVibes.clear();
+        renderActiveVibes();
         updateActiveChip();
         filterRestaurants();
     }
+
+    function toggleVibe(vibe) {
+        if (!vibe) return;
+        if (activeVibes.has(vibe)) activeVibes.delete(vibe);
+        else activeVibes.add(vibe);
+        renderActiveVibes();
+        filterRestaurants();
+    }
+
+    function renderActiveVibes() {
+        if (!vibeFilterChips) return;
+        if (activeVibes.size === 0) {
+            vibeFilterChips.innerHTML = "";
+            return;
+        }
+        vibeFilterChips.innerHTML = [...activeVibes]
+            .map((v) => `<span class="vibe-active-chip" data-vibe="${escapeHtml(v)}">${escapeHtml(v)}<span class="x">×</span></span>`)
+            .join("");
+    }
+
+    vibeFilterChips.addEventListener("click", (e) => {
+        const chip = e.target.closest(".vibe-active-chip");
+        if (!chip) return;
+        toggleVibe(chip.dataset.vibe);
+    });
 
     resetBtn.addEventListener("click", resetFilters);
 
@@ -745,6 +782,10 @@
             if (lunchFilter.checked && !r.Lunch) return false;
             if (dinnerFilter.checked && !r.Dinner) return false;
             if (bookableFilter.checked && !isBookable(r)) return false;
+            if (activeVibes.size) {
+                const rv = new Set((r.ai && r.ai.vibe_tags) || []);
+                for (const want of activeVibes) if (!rv.has(want)) return false;
+            }
             return true;
         });
 
@@ -853,7 +894,7 @@
             : "";
 
         const vibeHtml = (ai.vibe_tags && ai.vibe_tags.length)
-            ? `<div class="vibe-row">${ai.vibe_tags.map((v) => `<span class="vibe-tag">${escapeHtml(v)}</span>`).join("")}</div>`
+            ? `<div class="vibe-row">${ai.vibe_tags.map((v) => `<span class="vibe-tag${activeVibes.has(v) ? " active" : ""}" data-vibe="${escapeHtml(v)}" title="Filter by '${escapeHtml(v)}'">${escapeHtml(v)}</span>`).join("")}</div>`
             : "";
 
         const menusHtml = `
@@ -943,6 +984,12 @@
 
     // Event delegation for card actions
     grid.addEventListener("click", (e) => {
+        const vibeEl = e.target.closest(".vibe-tag");
+        if (vibeEl) {
+            e.stopPropagation();
+            toggleVibe(vibeEl.dataset.vibe);
+            return;
+        }
         const card = e.target.closest(".card");
         if (!card) return;
         if (e.target.closest(".social-icon")) return; // let socials handle themselves
@@ -1024,7 +1071,7 @@
         } else if (hasVegOption(r.Lunch) || hasVegOption(r.Dinner)) {
             badges.push(`<span class="badge veg">🥬 Veg-friendly</span>`);
         }
-        (ai.vibe_tags || []).slice(0, 3).forEach((v) => badges.push(`<span class="badge vibe">${escapeHtml(v)}</span>`));
+        (ai.vibe_tags || []).slice(0, 3).forEach((v) => badges.push(`<span class="badge vibe vibe-tag${activeVibes.has(v) ? " active" : ""}" data-vibe="${escapeHtml(v)}" title="Filter by '${escapeHtml(v)}'">${escapeHtml(v)}</span>`));
         $("modalBadges").innerHTML = badges.slice(0, 5).join("");
 
         // Surface one-liner inside the hero subline if we have it (overrides cuisine/hood string)
@@ -1211,7 +1258,15 @@
     }
 
     closeModalBtn.addEventListener("click", closeModal);
-    modalOverlay.addEventListener("click", (e) => { if (e.target === modalOverlay) closeModal(); });
+    modalOverlay.addEventListener("click", (e) => {
+        const vibeEl = e.target.closest(".vibe-tag");
+        if (vibeEl) {
+            e.stopPropagation();
+            toggleVibe(vibeEl.dataset.vibe);
+            return;
+        }
+        if (e.target === modalOverlay) closeModal();
+    });
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && modalOverlay.style.display === "flex") closeModal();
     });

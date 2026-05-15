@@ -88,6 +88,25 @@ def main() -> None:
     archive_path = HERE / f"menus-{season}-{year}.json"
 
     if restaurants is not None:
+        # Carry over AI enrichment from the previous snapshot so a fresh fetch
+        # without --enrich doesn't wipe months of LLM work. enrich.py's cache
+        # will re-prompt only when a restaurant's content hash changes.
+        if latest_path.exists():
+            try:
+                prev = json.loads(latest_path.read_text(encoding="utf-8"))
+                prev_ai = {p.get("id"): p.get("ai") for p in prev if p.get("ai")}
+                if prev_ai:
+                    preserved = 0
+                    for r in restaurants:
+                        ai = prev_ai.get(r.get("id"))
+                        if ai:
+                            r["ai"] = ai
+                            preserved += 1
+                    if preserved:
+                        print(f"Preserved AI enrichment for {preserved} restaurants.")
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"Warning: could not preserve prior AI fields ({e}).")
+
         write_json(latest_path, restaurants)
         write_json(archive_path, restaurants)
         season_payload = {

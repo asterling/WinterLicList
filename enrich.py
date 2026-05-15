@@ -37,14 +37,45 @@ VIBE_VOCAB = [
 ]
 
 PROMPT_TEMPLATE = """You are tagging a restaurant entry for a Toronto prix-fixe festival.
-Read the data and return STRICT JSON matching this schema (no extra fields,
-no markdown, no commentary):
+Return STRICT JSON matching this schema (no markdown, no extra fields):
 
 {{
   "standouts": [3 to 5 dish names taken VERBATIM from the menus below],
-  "vibe_tags": [3 to 5 tags from this list: {vocab}],
+  "vibe_tags": [3 to 5 tags from the list below],
   "one_liner": "single sentence under 100 chars about what makes this place distinctive"
 }}
+
+ALLOWED VIBE TAGS: {vocab}
+
+Rules for vibe_tags — follow strictly:
+- HARD RULE: never use both "upscale" and "trendy" in the same response. Pick at most one.
+- HARD RULE: default to "casual" unless dinner price is $60+ or description signals fine dining (white tablecloth, tasting menu, chef-driven). Most Toronto prix-fixe spots are casual or mid-range.
+- HARD RULE: only use "hidden gem" if the restaurant is in a non-central neighbourhood OR has under 5 cuisines listed. Hotel restaurants are NEVER hidden gems.
+- Pick 3-4 tags from DIFFERENT axes:
+    * Formality:  casual | upscale
+    * Energy:     lively | quiet | cozy
+    * Occasion:   date night | business dinner | groups | celebration | quick lunch | family friendly | romantic
+    * Reputation: hidden gem | neighbourhood favourite | trendy
+- It is BETTER to return 3 accurate tags than 5 generic ones.
+
+Examples of GOOD selections:
+- $35 Italian neighbourhood spot: ["casual", "cozy", "neighbourhood favourite"]
+- $75 chef-driven tasting menu: ["upscale", "date night", "celebration"]
+- Hotel steakhouse: ["upscale", "business dinner", "groups"]
+- Late-night dim sum: ["casual", "lively", "groups"]
+
+Examples of BAD selections (do not produce these):
+- ["upscale", "trendy", "date night"]  -- breaks hard rule
+- ["upscale", "trendy", "hidden gem"]  -- breaks hard rule, contradictory
+
+Rules for standouts:
+- Take dish names exactly as they appear in the menus below (verbatim).
+- Mix courses (one appetizer, one main, one dessert) when possible.
+
+Rules for one_liner:
+- One sentence, under 100 characters, ideally referencing what's
+  distinctive (cuisine angle, chef, neighbourhood, room, signature dish).
+- Do not start with "Experience" or "Discover".
 
 Restaurant: {name}
 Cuisines: {cuisines}
@@ -114,7 +145,7 @@ def call_ollama(prompt: str, model: str, timeout: int = 90) -> str:
         "prompt": prompt,
         "stream": False,
         "format": "json",
-        "options": {"temperature": 0.2, "num_ctx": 4096},
+        "options": {"temperature": 0.45, "top_p": 0.9, "num_ctx": 4096},
     }
     req = request.Request(
         f"{OLLAMA_URL}/api/generate",
@@ -193,7 +224,12 @@ def normalize(data: dict) -> dict:
         key = v.strip().lower()
         if key in allowed and allowed[key] not in cleaned:
             cleaned.append(allowed[key])
-    vibe = cleaned[:5]
+    # Safety net: model's habitual "upscale + trendy" pair almost never reflects
+    # the menu. If both show up, drop "trendy" (rarer truth than "upscale" for
+    # genuinely fine-dining listings).
+    if "upscale" in cleaned and "trendy" in cleaned:
+        cleaned.remove("trendy")
+    vibe = cleaned[:4]
 
     one_liner = data.get("one_liner") or ""
     if not isinstance(one_liner, str):
