@@ -244,5 +244,156 @@
     "vegetarian_opt": "Yes",
     "website": "http://www.thechefshouse.com",
     "youtube": ""
+  },
+  {
+    "@odata.etag": "W/\"96278119b595466d018a441a982f8bc8c5fb21a049e429e71c3f9758cde43f4b\"",
+    "Dinner": {
+      "appetizers": [
+        {
+          "description": "goat's yogurt, brown butter honey, chives",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Fried Eggplant",
+          "vegan_opt": "No",
+          "vegetarian_opt": "Yes"
+        },
+        {
+          "description": "treviso jam, red endives, chermoula, balsamic pearls",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Buratta Salad",
+          "vegan_opt": "No",
+          "vegetarian_opt": "Yes"
+        },
+        {
+          "description": "tomato jam, hazelnuts, chives",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Foie Gras",
+          "vegan_opt": "No",
+          "vegetarian_opt": "No"
+        }
+      ],
+      "appetizers_notes": "",
+      "campaign": "Summerlicious",
+      "desserts": [
+        {
+          "description": "pistachio, rose water, goat's yogurt",
+          "gluten_opt": "Yes",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Raspberry Tart",
+          "vegan_opt": "No",
+          "vegetarian_opt": "Yes"
+        },
+        {
+          "description": "almonds, dark and milk chocolate, coffee foam, cocoa nibs",
+          "gluten_opt": "Yes",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Coffee Chocolate Ganache",
+          "vegan_opt": "No",
+          "vegetarian_opt": "Yes"
+        },
+        {
+          "description": "manchego, grana padano, pecorino, cherry compote",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Basque Cheesecake",
+          "vegan_opt": "No",
+          "vegetarian_opt": "No"
+        }
+      ],
+      "desserts_notes": "",
+      "main_dishes": [
+        {
+          "description": "half chicken, romesco, caraflex cabbage, pickled pearl onion relish, nasturtium",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Charcoal Grilled Gianonne Chicken",
+          "vegan_opt": "No",
+          "vegetarian_opt": "No"
+        },
+        {
+          "description": "Spanish sofrito, lemon, smoked paprika oil",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Whole Sea Bream",
+          "vegan_opt": "No",
+          "vegetarian_opt": "No"
+        },
+        {
+          "description": "grana padano and pecorino cream, pangratatto, saba",
+          "gluten_opt": "No",
+          "local_opt": "No",
+          "local_suppliers": null,
+          "name": "Mushroom Agnolotti",
+          "vegan_opt": "No",
+          "vegetarian_opt": "Yes"
+        }
+      ],
+      "main_dishes_notes": "",
+      "meal_type": "Dinner",
+      "price": "$65"
+    },
+    "EmailAddress": "rahil@ascarihospitalitygroup.com",
+    "Lunch": null,
+    "__CreatedOn": "2026-05-15T12:55:59.973-04:00",
+    "__ModifiedOn": "2026-05-15T12:55:59.973-04:00",
+    "__Owner": "c3api_config",
+    "__Status": "",
+    "accessible_opt": "Yes",
+    "address": "355 King St W",
+    "cuisines": [
+      "Mediterranean"
+    ],
+    "description": "Experience the vibrant flavours of the Mediterranean coast, where fresh ingredients meet bold, authentic plates. Located in the Sutton Place Hotel in the heart of downtown Toronto, Abrielle's menu draws influence from the sun-drenched regions of the south of France, Italy and Spain and a few neighbouring countries, with a focus on quality of food and hospitality.",
+    "dining_opts": [],
+    "facebook": "",
+    "featured_opt": "",
+    "geo_lat": "43.645866788",
+    "geo_long": "-79.391875956",
+    "gluten_opt": "",
+    "hotel_name": "Sutton Place Hotel",
+    "id": "674e513f-fcca-47a5-be4d-6c3c5c8e954d",
+    "instagram": "https://www.instagram.com/abrielleto/",
+    "local_opt": "",
+    "neighbourhoods": [
+      "Downtown",
+      "Entertainment District"
+    ],
+    "opentable_dinner": "",
+    "opentable_lunch": "",
+    "order_dinner": "",
+    "order_lunch": "",
+    "phone": "416-915-3760",
+    "postal_code": "M5V 1J5",
+    "reservations_dinner": "",
+    "reservations_lunch": "",
+    "restaurant_id": "abrielle12",
+    "restaurant_image": [
+      {
+        "bin_id": "-whXOqh0vLViA5pc16vR2w",
+        "file_name": "e1a35b04-0892-4079-88e6-b9073d04b60b-2025_12_18-Abrielle_interior-df766e76-ce73-4533-bf34-99a94a4734d7.jpg",
+        "name": "Abrielle interior.jpg",
+        "size": 146711,
+        "status": "success",
+        "type": "image/jpeg",
+        "uploadDate": "2025-12-18T19:19:19.525-05:00"
+      }
+    ],
+    "restaurant_name": "Abrielle",
+    "status": "Summerlicious",
+    "twitter": "",
+    "vegan_opt": "",
+    "vegetarian_opt": "Yes",
+    "website": "http://abrielle.ca",
+    "youtube": ""
   }
 ]
