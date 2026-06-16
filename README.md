@@ -1,6 +1,6 @@
-# Winterlicious 2026 Menu Explorer
+# Summerlicious 2026 Menu Explorer
 
-A fast, filterable, mobile-friendly browser for every restaurant participating in **Toronto's Winterlicious 2026** prix-fixe festival.
+A fast, filterable, mobile-friendly browser for every restaurant participating in **Toronto's Summerlicious 2026** prix-fixe festival (Jul 3–16, 2026). The same site auto-flips between Winterlicious and Summerlicious as the City rotates campaigns.
 
 Live: **https://asterling.github.io/WinterLicList/**
 
@@ -37,11 +37,15 @@ python3 -m http.server 8000
 ## Refreshing the data
 
 ```bash
-python3 -m pip install requests
+python3 -m pip install curl_cffi
 python3 winterlic.py
 ```
 
-This rewrites `winterlicious_menus_2026.json` from the city's live endpoint.
+> The City's endpoint sits behind Akamai Bot Manager, which blocks plain
+> `requests`/`curl` by TLS fingerprint. `winterlic.py` uses `curl_cffi` to
+> impersonate Chrome's TLS handshake — that's the only reason the fetch works.
+
+This rewrites `menus-latest.json` (and the per-campaign archive) from the city's live endpoint.
 
 A GitHub Action runs this on a schedule — see `.github/workflows/refresh-data.yml`.
 

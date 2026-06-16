@@ -1,10 +1,27 @@
 name: Refresh menu data
 
+# Re-fetches the City of Toronto Licious data once a day.
+#
+# Preservation contract: winterlic.py reads the committed menus-latest.json
+# (which carries AI enrichment from local runs of `winterlic.py --enrich`)
+# and copies the `ai.*` fields onto matching ids in the fresh fetch before
+# overwriting the file. The Action itself never runs the LLM. If the fetch
+# would zero out a non-trivial amount of prior enrichment, winterlic.py exits
+# with a non-zero status and this workflow fails loudly — better an angry
+# email than a silent regression.
+
 on:
-  schedule:
-    # 10:00 UTC daily ≈ 6 AM Toronto (EDT) / 5 AM (EST)
-    - cron: "0 10 * * *"
+  # Scheduled refresh suspended for now — re-enable by uncommenting the cron.
+  # Still runnable on demand via the "Run workflow" button (workflow_dispatch).
+  # schedule:
+  #   # 10:00 UTC daily ≈ 6 AM Toronto (EDT) / 5 AM (EST)
+  #   - cron: "0 10 * * *"
   workflow_dispatch:
+    inputs:
+      allow_ai_loss:
+        description: "Allow this run to wipe prior AI enrichment (only set when the City API has rotated ids)."
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -20,14 +37,20 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --upgrade pip requests
+        run: python -m pip install --upgrade pip curl_cffi
 
       - name: Fetch latest menus
-        run: python winterlic.py
+        run: |
+          if [[ "${{ inputs.allow_ai_loss }}" == "true" ]]; then
+            python winterlic.py --allow-ai-loss
+          else
+            python winterlic.py
+          fi
 
       - name: Commit if changed
         run: |
-          if [[ -n "$(git status --porcelain '*.json')" ]]; then
+          changed=$(git status --porcelain '*.json' | wc -l)
+          if [[ "$changed" -gt 0 ]]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add *.json

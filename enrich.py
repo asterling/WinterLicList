@@ -76,6 +76,10 @@ Rules for one_liner:
 - One sentence, under 100 characters, ideally referencing what's
   distinctive (cuisine angle, chef, neighbourhood, room, signature dish).
 - Do not start with "Experience" or "Discover".
+- Do NOT call the restaurant a "hidden gem", "must-try", or "best-kept
+  secret" — these are empty clichés. Name something concrete instead.
+- Do not invent accolades (e.g. "Michelin-starred") unless they appear in
+  the description above.
 
 Restaurant: {name}
 Cuisines: {cuisines}

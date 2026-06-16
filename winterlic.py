@@ -9,25 +9,40 @@ script writes three files so the frontend can stay generic:
   - season.json                        metadata (label, season, year)
 """
 
+from __future__ import annotations
+
 import argparse
 import json
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 
-import requests
-
 API_URL = "https://secure.toronto.ca/c3api_data/v2/DataAccess.svc/Licious/map_data"
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; WinterLicList/1.0; +https://github.com/asterling/WinterLicList)",
-    "Accept": "application/json",
-}
+# OData defaults to Atom XML; ask for JSON explicitly. The TLS impersonation
+# (see fetch_all), not these headers, is what satisfies the WAF.
+HEADERS = {"Accept": "application/json"}
+IMPERSONATE = "chrome"
 
 HERE = Path(__file__).parent
 
 
 def fetch_all(top: int = 1000) -> list:
-    resp = requests.get(API_URL, params={"$skip": 0, "$top": top}, headers=HEADERS, timeout=30)
+    # curl_cffi (not plain requests): in late May 2026 the City's Akamai Bot
+    # Manager started 403-ing the endpoint based on the client's TLS/JA3
+    # fingerprint, not its IP or headers — a real Chrome from any IP still
+    # works, but stock requests/curl get blocked everywhere. curl_cffi replays
+    # Chrome's actual TLS handshake (impersonate="chrome") to get back through.
+    # Imported lazily so --no-fetch enrichment runs don't need the dependency.
+    from curl_cffi import requests
+
+    resp = requests.get(
+        API_URL,
+        params={"$skip": 0, "$top": top},
+        headers=HEADERS,
+        impersonate=IMPERSONATE,
+        timeout=30,
+    )
     resp.raise_for_status()
     return resp.json().get("value", [])
 
@@ -53,10 +68,17 @@ def detect_season(today: datetime | None = None) -> tuple[str, int]:
     if override in ("summer", "summerlicious"):
         return ("Summerlicious", today.year)
 
+    # Promote the edition that is currently running or next on the calendar.
+    # Winterlicious runs late Jan–mid Feb; Summerlicious runs early–mid July.
+    #   Jan–Feb  -> Winterlicious (this year)
+    #   Mar–Sep  -> Summerlicious (this year)  ← covers the summer run-up + run
+    #   Oct–Dec  -> Winterlicious (next year)  ← the winter edition lands in Jan
     month = today.month
-    if month <= 6:
-        return ("Winterlicious", today.year)
-    return ("Summerlicious", today.year)
+    if 3 <= month <= 9:
+        return ("Summerlicious", today.year)
+    if month >= 10:
+        return ("Winterlicious", today.year + 1)
+    return ("Winterlicious", today.year)
 
 
 def write_json(path: Path, payload) -> None:
@@ -70,6 +92,11 @@ def main() -> None:
     parser.add_argument("--no-fetch", action="store_true", help="Skip fetch; only run enrichment on existing JSON.")
     parser.add_argument("--model", default="qwen2.5:7b", help="Ollama model tag for enrichment.")
     parser.add_argument("--limit", type=int, default=None, help="Enrich only the first N restaurants (testing).")
+    parser.add_argument(
+        "--allow-ai-loss",
+        action="store_true",
+        help="Skip the safety check that aborts when a fetch would wipe out prior AI enrichment.",
+    )
     args = parser.parse_args()
 
     if not args.no_fetch:
@@ -91,10 +118,12 @@ def main() -> None:
         # Carry over AI enrichment from the previous snapshot so a fresh fetch
         # without --enrich doesn't wipe months of LLM work. enrich.py's cache
         # will re-prompt only when a restaurant's content hash changes.
+        prev_ai_count = 0
         if latest_path.exists():
             try:
                 prev = json.loads(latest_path.read_text(encoding="utf-8"))
                 prev_ai = {p.get("id"): p.get("ai") for p in prev if p.get("ai")}
+                prev_ai_count = len(prev_ai)
                 if prev_ai:
                     preserved = 0
                     for r in restaurants:
@@ -102,8 +131,19 @@ def main() -> None:
                         if ai:
                             r["ai"] = ai
                             preserved += 1
-                    if preserved:
-                        print(f"Preserved AI enrichment for {preserved} restaurants.")
+                    print(f"Preserved AI enrichment for {preserved}/{prev_ai_count} restaurants.")
+                    if (
+                        preserved == 0
+                        and prev_ai_count >= 10
+                        and not args.allow_ai_loss
+                    ):
+                        sys.exit(
+                            f"ABORT: prior snapshot had {prev_ai_count} AI-enriched "
+                            "restaurants but none of their ids appear in the fresh "
+                            "fetch. This usually means the City API changed ids or "
+                            "the prior file is corrupt. Pass --allow-ai-loss to "
+                            "override after you've confirmed it's intentional."
+                        )
             except (json.JSONDecodeError, OSError) as e:
                 print(f"Warning: could not preserve prior AI fields ({e}).")
 

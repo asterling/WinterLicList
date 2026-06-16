@@ -1182,7 +1182,8 @@
     function shareRestaurant(r) {
         const slug = slugify(r.restaurant_name) || r.id;
         const url = `${window.location.origin}${window.location.pathname}#r=${slug}`;
-        const data = { title: r.restaurant_name, text: `${r.restaurant_name} — Winterlicious menu`, url };
+        const seasonName = (seasonMeta && seasonMeta.label) || "Licious";
+        const data = { title: r.restaurant_name, text: `${r.restaurant_name} — ${seasonName} menu`, url };
         if (navigator.share) {
             navigator.share(data).catch(() => {});
         } else if (navigator.clipboard) {
