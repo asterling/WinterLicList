@@ -172,7 +172,8 @@
       "dietary_summary": "6 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:12.743907+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"bee2211d6e147c97546db30ba64fc240fbb34059a5573192d5b149ff77fda5be\"",
@@ -435,7 +436,8 @@
       "dietary_summary": "1 vegan, 9 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:18.390818+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"094f140deb3a377f40087564970f4b94b52726dc617de530038f85fea9313cb8\"",
@@ -723,7 +725,8 @@
       "dietary_summary": "8 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:23.623028+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"9b789a56c6073a4dc67850316730ba56272880fa175f64d6185e3f9c0efccd22\"",
@@ -909,7 +912,8 @@
       "dietary_summary": "3 vegan, 3 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:28.858659+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"015772c1a966d9c7157bd7729a1b3d50f7ab49be1459b120632bbc8972777093\"",
@@ -1169,7 +1173,8 @@
       "dietary_summary": "2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:33.406937+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"939a1b1e884634c021059287375ad8fa0396f55bce64e6d22e4fe7a4ce85ba21\"",
@@ -1449,7 +1454,8 @@
       "dietary_summary": "2 vegan, 7 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:40.235238+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"d1fe7d796887a1fc554c29cd2a78356760ed2e860a396b026fb4059611eea2be\"",
@@ -1792,7 +1798,8 @@
       "dietary_summary": "6 vegan, 11 vegetarian, 19 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:43:43.545667+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"722428a2a455aef2c47702f4f12f1c41c0f02f5660ba66c6bd48ee07252cf20e\"",
@@ -2088,7 +2095,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:50.841536+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"25740b397d76ffd98db4b6184b9d9fdce0ca7d82bb53acd074fb3d72ed0bd050\"",
@@ -2349,7 +2357,8 @@
       "dietary_summary": "2 vegan, 15 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:22:56.055798+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6309802ef8380457ef33f8fc47396e1afbb68b62c383143ad7f89cb4c270b866\"",
@@ -2645,7 +2654,8 @@
       "dietary_summary": "1 vegan, 9 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:01.195302+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"b74d6dd08481524b4ab62b656caf43b20e3a5312c0abc5100469ac5aabc58a40\"",
@@ -2840,7 +2850,8 @@
       "dietary_summary": "3 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:07.629790+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"6e665b3e12b697f06ce8577c9456643f2009afe7781b938821ff2e2ae9a2d9dc\"",
@@ -3262,7 +3273,8 @@
       "dietary_summary": "4 vegan, 24 vegetarian, 22 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:13.681621+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"bfdac648d855db749800543fc215d75c1fe7647f57d2b372a9e0e3328c0c889d\"",
@@ -3551,7 +3563,8 @@
       "dietary_summary": "1 vegan, 13 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:19.196230+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"64556f0861ad34ad7ea3149bb4f1b4b9d46019e3e42980275e532ded587500e0\"",
@@ -3772,7 +3785,8 @@
       "dietary_summary": "1 vegan, 3 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:23.659450+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"16c4ed92c341a43714a15548d7b85ef3d1f7b2e8fc9b82fc73931d7d3ad8ce07\"",
@@ -3994,7 +4008,8 @@
       "dietary_summary": "8 vegan, 1 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:28.688934+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"e02f828d131c80cbca0237a1a06f270d69066f4a44f5ba74e185f43a2cb25333\"",
@@ -4265,7 +4280,8 @@
       "dietary_summary": "10 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:33.914666+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"20399861c13d24c4684c5569662c2f99f0827606f2126c719f93bcfa517cd09c\"",
@@ -4552,7 +4568,8 @@
       "dietary_summary": "2 vegan, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:39.462341+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"d088456ed33ba722faf1d41dc6ed537e72a2ca34d23295f4ab8f794186d4de38\"",
@@ -4897,7 +4914,8 @@
       "dietary_summary": "8 vegan, 9 vegetarian, 15 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:45.073719+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"fced1af21f39e1ea83fe2bf290579211334a13b7cb9381f35f687eb0b275de2a\"",
@@ -5158,7 +5176,8 @@
       "dietary_summary": "2 vegan, 4 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:50.294728+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"80b3c68022ece5ee57578d4c9597988b24de7136cf56ea5404866c2885f9c507\"",
@@ -5326,7 +5345,8 @@
       "dietary_summary": "3 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:23:56.024662+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"73806c8d5679b400e38093b93d8e2237a8684637abfee8c994cfb116017736f2\"",
@@ -5503,7 +5523,8 @@
       "dietary_summary": "5 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:01.827276+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"e2aefd15c4e35738d8bcf91d05834f4e450bf178045f3ff0ed3747deb9f707c8\"",
@@ -5670,7 +5691,8 @@
       "dietary_summary": "2 vegan, 2 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:07.486472+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6f94531616c071e036cb46dc9c1b8e0e781b3e4558ea2ee738115223de80c090\"",
@@ -5846,7 +5868,8 @@
       "dietary_summary": "3 vegan, 3 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:12.656149+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"fbdf5cee37ae0becdbffa1b1caef9182fa50ba9415e992bc551b908c9249cd5c\"",
@@ -6041,7 +6064,8 @@
       "dietary_summary": "3 vegan, 2 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:17.386796+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"18f5a6b4ba40199dd87c05683c6785f3d82a41a62e017575d3b8135f6d953508\"",
@@ -6436,7 +6460,8 @@
       "dietary_summary": "6 vegan, 15 vegetarian, 26 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:22.336370+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"2dee48eb8d0aa2045c7db3e7bfcde0187491a365b326c3bd61eb9bfb90457802\"",
@@ -6716,7 +6741,8 @@
       "dietary_summary": "9 vegan, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:28.110199+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"cda96a586dede38d00ccdca02078879dd01925a624a0e66408aa8ada6c180b7d\"",
@@ -6979,7 +7005,8 @@
       "dietary_summary": "4 vegan, 8 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:34.187051+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"9b96d671453c39fc1e475e124f20d0f6ff06cb8f40a3da2ac16c90bb8331a82b\"",
@@ -7164,7 +7191,8 @@
       "dietary_summary": "1 vegan, 3 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:39.108547+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"bbeb4c8a0beafe5a42e79414c87b489ce0e2c38ac65a4a6d269614ddd80c37fa\"",
@@ -7388,7 +7416,8 @@
       "dietary_summary": "3 vegan, 7 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:44.283125+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"52bc431a0f0586f672826d0c9cbcb7702d0f181feb9b48c123cc1c7fbb86b751\"",
@@ -7564,7 +7593,8 @@
       "dietary_summary": "2 vegan, 6 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:49.171232+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"67c7288fab37d594003b5974064f4702b4684d31660b3f0426998112a2e96ec2\"",
@@ -7843,7 +7873,8 @@
       "dietary_summary": "13 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:54.403815+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6f784d20fb0f7f26a36b44a12d841275f3675340b4882d41f6ca8b20e0c806e1\"",
@@ -8047,7 +8078,8 @@
       "dietary_summary": "2 vegan, 5 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:24:59.279549+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7aa8dcdc155e8cab326fbb0cb6b34e8fb72241ebeb7df820ce662a0e4d395972\"",
@@ -8287,7 +8319,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:04.362964+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b581fe4350cce17c51fc8403b3cfc4ae1ac0b095894390c61f4b47383d9d4538\"",
@@ -8621,7 +8654,8 @@
       "dietary_summary": "15 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:43:50.304061+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"cad9da50dab906bb7007c3e667e5053d01625dc694aab3a0f0607021f06fe0d7\"",
@@ -8799,7 +8833,8 @@
       "dietary_summary": "3 vegan, 3 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:14.441995+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"53620a660e48864b7de119928a96ce0f77fd79e578603f1ec30a428f860f3f1a\"",
@@ -9060,7 +9095,8 @@
       "dietary_summary": "6 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:20.215254+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"e2338b50e97116bf1749ec641dd4326f075af15d37b03bfc2c1c7db44fcc08ad\"",
@@ -9366,7 +9402,8 @@
       "dietary_summary": "9 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:26.014835+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"7712bded5c22e70e7952fd1ca516c26c9f660735188acb2f67427de685644a1a\"",
@@ -9698,7 +9735,8 @@
       "dietary_summary": "4 vegan, 11 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:32.494324+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"9ab49abf179ae421a4ae07fa521034d02be5debdef9806fc6aa93b960d973d43\"",
@@ -10033,7 +10071,8 @@
       "dietary_summary": "13 vegan, 2 vegetarian, 19 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:38.052836+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"552787ddc69d0c8a707847488e47298fad1ab276fd40f66ff6a2997628f25da0\"",
@@ -10296,7 +10335,8 @@
       "dietary_summary": "11 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:43.072372+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"2b42d09a5ee81afa1dfbf00abaa05459d34c18196bc49ede4ec721eeaafd599d\"",
@@ -10556,7 +10596,8 @@
       "dietary_summary": "10 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:48.218975+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"034e8ebc79b374ae17569747986b7bdd4bc53cc1c140c0fca60eb8774b3384df\"",
@@ -10827,7 +10868,8 @@
       "dietary_summary": "14 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:53.938242+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"583ecfc6bf0c73818527eed6286ae2ee35445c808713de8d357c1caad8e9c053\"",
@@ -11144,7 +11186,8 @@
       "dietary_summary": "10 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:25:58.745264+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"4e5af5ef12ea4b2913c8de53e797b6961ec7abb29ae908574276ded4324dbc9b\"",
@@ -11312,7 +11355,8 @@
       "dietary_summary": "6 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:03.224789+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7c503b2456c27cfdca2bd9bcf48183afed94d5886bef7c32e9382d935ba8a92d\"",
@@ -11575,7 +11619,8 @@
       "dietary_summary": "4 vegetarian, 12 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:07.920610+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a9791fb2dd02793bc835b12d597695cbb7f15316f3f5533bb79c7cecac34a71b\"",
@@ -11742,7 +11787,8 @@
       "dietary_summary": "2 vegan, 3 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:43:56.245310+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a97f116c829fd2a9692aba27a5bfa0e9e44b9cf88afc8442f284f494cc11230a\"",
@@ -11929,7 +11975,8 @@
       "dietary_summary": "3 vegan, 2 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:18.357248+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"944343f25c3d46d60ea79d0f269f8a72195db73aa3acd24f0d85f22db02a66f9\"",
@@ -12191,7 +12238,8 @@
       "dietary_summary": "2 vegan, 6 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:23.290273+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"39ddd2bf1c988e9f2e46b00fb27020ef3c88793f15f757e94c92b0cb299cc381\"",
@@ -12478,7 +12526,8 @@
       "dietary_summary": "6 vegan, 5 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:28.489715+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"bd438dcc25ac79df110321b7e3bb1a041575eb5e324c660e652724945213eb19\"",
@@ -12673,7 +12722,8 @@
       "dietary_summary": "3 vegan, 2 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:33.235099+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"2c44b8049932eef8c031ae4eace26e9b5c20f0d2b0ee096c0b184b57bd3cd93f\"",
@@ -12851,7 +12901,8 @@
       "dietary_summary": "5 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:37.794515+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"d5aa50fdb2c3255e4a644c2ddd9f41d0b72e6bc4859f5de6c5dc597a9f656a01\"",
@@ -13045,7 +13096,8 @@
       "dietary_summary": "2 vegan, 5 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:42.719258+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"4aeebaf39b791d9879c740341c0a8aab88d99c4b794e92e51fe653bdf11c074c\"",
@@ -13221,7 +13273,8 @@
       "dietary_summary": "2 vegan, 3 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:46.870472+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"f9f0163b9720b7c8f217c69119564d8651b42d6fd10e053a7bb060b72d6d6edf\"",
@@ -13545,7 +13598,8 @@
       "dietary_summary": "8 vegan, 11 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:02.108045+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"380a8eaf81e5ac743c906934ba725a8947ac70f859f2cc3b94ad5ef234d148c2\"",
@@ -13807,7 +13861,8 @@
       "dietary_summary": "2 vegan, 7 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:26:56.412112+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"f76da8f2089a332bb7d25cd3807557ee12180c00f9ce2c45880285b41c94de13\"",
@@ -14113,7 +14168,8 @@
       "dietary_summary": "4 vegan, 9 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:01.770974+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"90181e3a02169373e858f3f2369e368d44651bac200950dbce562ff161ca61a9\"",
@@ -14412,7 +14468,8 @@
       "dietary_summary": "10 vegetarian, 10 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:06.507907+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"cd0b91ef4a75d80ea6bd84c3e768823409c99d54ecbb489fc98fe35e050c1cf0\"",
@@ -14589,7 +14646,8 @@
       "dietary_summary": "2 vegan, 5 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:10.921294+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"4867d1c4299601cdf0172879d28ca3133728135157589a1b148a9b38c0679825\"",
@@ -14922,7 +14980,8 @@
       "dietary_summary": "6 vegan, 10 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:15.913639+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"e9c11d2c012263be80c1b8944a09d75f955e6bacc3706ac78cdf2824d13b4b53\"",
@@ -15109,7 +15168,8 @@
       "dietary_summary": "1 vegan, 5 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:07.879220+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"3533b89ab385774b2c60fe4a7a12e52378bbc6554542d911a6c02da099a3f034\"",
@@ -15371,7 +15431,8 @@
       "dietary_summary": "1 vegan, 11 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:25.702052+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ac9832d4a1754c5fc7a8d9d0ca8ca57a864175d380839eec5acf36550edfc3b7\"",
@@ -15632,7 +15693,8 @@
       "dietary_summary": "11 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:31.293405+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7aaf00ffcaf7e53d8d1b9e43c60e390fa14a39c4979971a7d4c636fbababe5c6\"",
@@ -15808,7 +15870,8 @@
       "dietary_summary": "6 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:36.216449+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"255c1c79096b06fb1380fa7fe9a30353037d276003a20e91431ca5f6ce6a55f9\"",
@@ -16123,7 +16186,8 @@
       "dietary_summary": "10 vegan, 7 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:40.886893+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"8bf3a681fb118cb7ca443e171d7d0615530006b7173a9c163180adc56233f14f\"",
@@ -16484,7 +16548,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:45.820512+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"09c30b41fcea2bfd384d254d770a47258327d0724b5de607f8acc81c561cb904\"",
@@ -16754,7 +16819,8 @@
       "dietary_summary": "1 vegan, 1 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:50.044985+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"98ffb81d0163794afe94477bbf6ff5a8762cc5d7dee7500ac467f54fc4716375\"",
@@ -17106,7 +17172,8 @@
       "dietary_summary": "5 vegan, 15 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:54.903839+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"de0150e580e5a91b00cb03fb738214b5233d62cc3f8f9d5dd4a580f7222d00b4\"",
@@ -17273,7 +17340,8 @@
       "dietary_summary": "2 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:27:59.651414+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"41f8d0e7fd0175661210f48eb9802094744ae05981b47aa3ca46be7544035bba\"",
@@ -17535,7 +17603,8 @@
       "dietary_summary": "4 vegan, 6 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:05.584742+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b0f2a152e374fe4ac96c0398c226ee385a822d6bc1230f27d6d811b1d8697798\"",
@@ -17805,7 +17874,8 @@
       "dietary_summary": "2 vegan, 9 vegetarian, 12 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:10.311999+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"297ace49eee7b2675a8b9a112eac55515a6338e3ba0291e1a6e0296de4d99c9d\"",
@@ -18088,7 +18158,8 @@
       "dietary_summary": "2 vegan, 10 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:14.631052+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0c259496debf030569d155da5a987986e735d57bdeeac5a63c993cb5721b6b33\"",
@@ -18264,7 +18335,8 @@
       "dietary_summary": "1 vegan, 4 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:18.954431+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"3de124ffefe1b41f39c4c8281f5159d9f921ec602c3790143ecd03bb2bf5f034\"",
@@ -18534,7 +18606,8 @@
       "dietary_summary": "12 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:14.269001+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"f2689252677e3ebc1975d643a053893730357af5d26d998b87dceed53f31b3ad\"",
@@ -18885,7 +18958,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:28.379228+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"5c3274c863f39143d64645312b817fbeff0f4f3384cc5c40466b089dd9e93658\"",
@@ -19217,7 +19291,8 @@
       "dietary_summary": "2 vegan, 12 vegetarian, 20 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:33.942500+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ad48117cc08cf9c9c898bade76a7469c2e4a5daaf8e2354fa113efc6855f8252\"",
@@ -19542,7 +19617,8 @@
       "dietary_summary": "4 vegan, 11 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:39.651647+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a96312462d206fcf7efc3195bbd31c5fcabe86bf05b98830fd41416e76699084\"",
@@ -19709,7 +19785,8 @@
       "dietary_summary": "3 vegan, 1 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:44.741711+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"941ad16aff97dbffaa8499e0788aedac26f5ba0ee396c9587e19b27e334087d7\"",
@@ -20088,7 +20165,8 @@
       "dietary_summary": "14 vegan, 8 vegetarian, 12 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:49.788692+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"94cd2bd5e3242e97dd543f98fd93f0817ba4280010e75689a09f42f8b42b8f94\"",
@@ -20300,7 +20378,8 @@
       "dietary_summary": "6 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:55.210426+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a78b1d11351f251664131f959d8d731c2385fe1e9540a0050bc41ceaffdd0b43\"",
@@ -20597,7 +20676,8 @@
       "dietary_summary": "6 vegan, 8 vegetarian, 10 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:28:59.731899+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ef25def4398cf2178acbc27d6787a903af34be9b8412b972e1e75eef47cf8b59\"",
@@ -20859,7 +20939,8 @@
       "dietary_summary": "3 vegan, 8 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:04.336600+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"694ecffa16237cf5ecfc9d41a71de679a68561a3700e474dd9d3afe632a92e6c\"",
@@ -21183,7 +21264,8 @@
       "dietary_summary": "2 vegan, 8 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:09.214929+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"968b4ce8c806cae7c330614e35032eeff640783a5110ed7fadf7089c7a974759\"",
@@ -21359,7 +21441,8 @@
       "dietary_summary": "1 vegan, 6 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:14.739030+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"35e9f6e6e6dde763eb3ba7dd44e5a78a908f6352a237a776cae881963a30fa58\"",
@@ -21622,7 +21705,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:21.594743+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6179d7ad377479cafe548ff2a41ca42890b0e90515054ab74e1761ef278b5d6f\"",
@@ -21885,7 +21969,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:24.466595+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7db55e039ae16b9cb109ed5c9ba03120166a8fedee8486739427b3092b47baba\"",
@@ -22053,7 +22138,8 @@
       "dietary_summary": "9 vegan, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:28.898256+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"73c371f95183e7ac42cf777d3fd12c2946138c2ce665e82820a8c1ccf0859dd1\"",
@@ -22316,7 +22402,8 @@
       "dietary_summary": "8 vegan, 4 vegetarian, 15 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:34.203743+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0dbea3d1257b87e5e811e8d0438ab17956e9584b0081b74c799a7bfc0ba8a5c6\"",
@@ -22484,7 +22571,8 @@
       "dietary_summary": "5 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:38.598830+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"29c707fb4392138581c087a07e6c73bff8ec39adafa614d316ee00b3219c4e62\"",
@@ -22861,7 +22949,8 @@
       "dietary_summary": "3 vegan, 16 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:28.442651+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"6d5f1c8f174ab7883fdf9006e360ab6a4327b005bf23156a5e9e3b50e945343b\"",
@@ -23028,7 +23117,8 @@
       "dietary_summary": "1 vegan, 4 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:48.831802+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"f6fa34dadf9d345005e15146f169b463128d1e3a6675a8f3226f1b7e53b89e7d\"",
@@ -23289,7 +23379,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:53.155321+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"f628d2291903e00432e0aa2c6a7b403fc53e833be1d468e43d38803e54cdfac8\"",
@@ -23552,7 +23643,8 @@
       "dietary_summary": "11 vegetarian, 12 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:29:57.958855+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"fb291f2b855cfeb6ddf2c3183543ee2bb69d982487fe4d6301cec67caedd6ccd\"",
@@ -23812,7 +23904,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:02.455316+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"95d6e50f759eae362c2b58d5442c268a9b867d2c4006c7320d98fb1378104f51\"",
@@ -23980,7 +24073,8 @@
       "dietary_summary": "1 vegan, 4 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:06.851298+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"219e55dcb3787fd98b222af1138e72b512eb0ecf86ebbfae3717df670ee72cfa\"",
@@ -24295,7 +24389,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:11.859430+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"f94cbb5fd76ef50253b911b14a4809c284f6185d5fcd7d2ee2cf85fe1d06a844\"",
@@ -24557,7 +24652,8 @@
       "dietary_summary": "2 vegan, 11 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:17.032204+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"3bc9302e2a56c233243721a54f3569a4148baaaaf12b22eebb8afdfb874a1a54\"",
@@ -24965,7 +25061,8 @@
       "dietary_summary": "2 vegan, 11 vegetarian, 18 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:22.473737+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"510eeaf55e201b878c7e3dc435109b65c2cb666a06612c848e35ce9a200b1536\"",
@@ -25132,7 +25229,8 @@
       "dietary_summary": "5 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:26.896358+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"e39a504a44f26ce8727fa25cd67fd75d39a3e732f4d9a94bcfc3e511683a7925\"",
@@ -25392,7 +25490,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:31.621138+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"90da8b7cf87b565b9557d103f53b19bab344925bcc0c7d52aa0755b85dfbfb64\"",
@@ -25653,7 +25752,8 @@
       "dietary_summary": "10 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:36.268376+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"abb777c59322d4a4860e677a0f41abbc73df393fc490d171d4f3fbbc10e62718\"",
@@ -25916,7 +26016,8 @@
       "dietary_summary": "18 vegan, 15 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:40.875130+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"2723558bf89699e5b2dc3e9e63a80c6a1eff826801e94390e21398f26e843ddc\"",
@@ -26176,7 +26277,8 @@
       "dietary_summary": "6 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:34.903539+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"cf521221c975a8df92a556cf012b56a477691a8aec37a6d3ad7e96f11d9b2478\"",
@@ -26457,7 +26559,8 @@
       "dietary_summary": "9 vegan, 6 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:40.591063+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ae64e9bd3a80ebb1d2fd5c6b9900fa8ee24e076b6c5cd1b071042dd31ebd622b\"",
@@ -26720,7 +26823,8 @@
       "dietary_summary": "9 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:30:55.708313+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"2b31e7b17bd8552474684a7ac285102b94c0ada63a266d77fc45862264e7715a\"",
@@ -27044,7 +27148,8 @@
       "dietary_summary": "11 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:00.740481+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6bbb2eadcb874e68b41caa01116ed43ac8413e6ccf8648e8666cdd94518457d2\"",
@@ -27274,7 +27379,8 @@
       "dietary_summary": "1 vegan, 7 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:05.661260+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0b0a8d4d0dcb0750a1ff1b3dc1c327e4ec5cfa48e8d7b97b7fc3221fe3d606b9\"",
@@ -27545,7 +27651,8 @@
       "dietary_summary": "3 vegan, 6 vegetarian, 10 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:10.254269+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"bf723c5c1c60dcffcf6c587eba48aa40527bc4a2f5355eeafc20324226b99271\"",
@@ -27808,7 +27915,8 @@
       "dietary_summary": "5 vegan, 7 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:15.135450+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"27448f56f6ab4fbcc51e4c4b894875dedd24d991026337728f83785451225729\"",
@@ -28068,7 +28176,8 @@
       "dietary_summary": "11 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:45.928032+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7c963444bdd09185e9b47289df26fcc76c86215a9d4ec81a787d5a386238c9e9\"",
@@ -28448,7 +28557,8 @@
       "dietary_summary": "6 vegan, 10 vegetarian, 10 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:25.189931+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0bc44de84b36cc278acd11179ec0f5c36f327674fdd36de807164983e81b7f83\"",
@@ -28711,7 +28821,8 @@
       "dietary_summary": "8 vegan, 7 vegetarian, 12 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:29.983577+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"5c793350405abe94ad77f6b5e0b302166d89c09950879bf52aa455f95633db4a\"",
@@ -28973,7 +29084,8 @@
       "dietary_summary": "4 vegan, 7 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:35.236455+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"a081cc7706343e2b64cae57f0e0285264c6baf77c153a4ea9b45a2893cbbf4e1\"",
@@ -29279,7 +29391,8 @@
       "dietary_summary": "7 vegan, 2 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:40.246528+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"9d96d1aea819f5f3c8717d3ebca1a1b6fd9cba284d391f8223170ffca11ed211\"",
@@ -29447,7 +29560,8 @@
       "dietary_summary": "2 vegan, 4 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:45.122331+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"6c0044830da411e325bfa0b794e9ca6b857cb5a2db10d1cd6ef9929c43eaecf9\"",
@@ -29614,7 +29728,8 @@
       "dietary_summary": "2 vegan, 2 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:49.916829+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"3cb3e569bb0d336e1b38b75e98dc6d86e75f3fb4c41a6eb13c96a755e82ec962\"",
@@ -29920,7 +30035,8 @@
       "dietary_summary": "4 vegan, 8 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:54.548039+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"9b78cabfaa92ab649c5d950bae593bff19b655491d06233509471120f117edda\"",
@@ -30226,7 +30342,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:31:59.272267+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"029c526ff914ba5ad1321819277a5dfd19dc17dc860f207c61e762c6e76e3947\"",
@@ -30540,7 +30657,8 @@
       "dietary_summary": "9 vegan, 7 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:05.875964+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"8c9869637ceac2a0efa62514c6394c7d60ffc74b46deafe421e418538056c1e9\"",
@@ -30912,7 +31030,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:10.956318+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"3370367ca586c0a5f02d521def5f1dd2e8a9b607851566da224046f6bc70a286\"",
@@ -31183,7 +31302,8 @@
       "dietary_summary": "10 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:15.769087+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ba2576874cb2d767848ebd6bd7fa7f291a7926fb50895023861e54868b306025\"",
@@ -31358,7 +31478,8 @@
       "dietary_summary": "3 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:20.519811+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"0f6d42724fc3b615ecf1c18bceb6ca8fc5292941adb7f7831fdb3287bedcd108\"",
@@ -31674,7 +31795,8 @@
       "dietary_summary": "6 vegan, 7 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:25.413554+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ab1f66be02d779ff362e8008ea6a43d43b8258e4cb1a9e894c75dfd63ab27b49\"",
@@ -31850,7 +31972,8 @@
       "dietary_summary": "6 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:29.935820+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b897f1762c5a958519d625d1691b94940d2f476b53e557450804dcd6c490a92f\"",
@@ -32147,7 +32270,8 @@
       "dietary_summary": "11 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:35.209915+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"5c2eb1068c47340728663f8e39a33bdaf0df2257d4491cc48f9d51f23584c1e9\"",
@@ -32417,7 +32541,8 @@
       "dietary_summary": "14 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:39.897727+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"4e828060851ce0abc123aa90d7736ebac4d0656fb4d3540430b9a12ddd241864\"",
@@ -32716,7 +32841,8 @@
       "dietary_summary": "8 vegan, 6 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:51.199938+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"7be14ece2ce55ea17b0377653e072ecef1045274572a6ea04323666804caf75c\"",
@@ -32885,7 +33011,8 @@
       "dietary_summary": "2 vegan, 4 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:49.416738+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"f9fc7db9ab61411bbf87162b89c6c4c3a6889606e58606831f51ef6a95b1ea14\"",
@@ -33227,7 +33354,8 @@
       "dietary_summary": "2 vegan, 14 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:54.435328+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0ec68febcaecd9f5f981ff24fa2701a7025dc0eca1a15efff7ca6f6c093a7795\"",
@@ -33526,7 +33654,8 @@
       "dietary_summary": "8 vegan, 8 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:32:59.099410+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"ae91197eef94b1ee3a64ccedf09599d31b096bc91b322476c79d48028a517d9f\"",
@@ -33889,7 +34018,8 @@
       "dietary_summary": "4 vegan, 11 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:04.697645+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"934e140d2b48bfcf7b86e93563e6d3ddde2449a3e4ce0d3ea46b4025aa2875fc\"",
@@ -34149,7 +34279,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:09.304314+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"74d893bd3bf59d1aba2770993f0cc82c004a643a22e89c492b9ea90172d09530\"",
@@ -34427,7 +34558,8 @@
       "dietary_summary": "1 vegan, 9 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:14.790809+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"886c15ef5022110d2eddc0135acf3b538eea2ee1cf7c29ba151a1f281d328984\"",
@@ -34641,7 +34773,8 @@
       "dietary_summary": "2 vegan, 2 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:19.795976+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"737f2b79d47f9214cfe21193b7c0ce857b69a6212b86e795f8a4825494754fba\"",
@@ -34828,7 +34961,8 @@
       "dietary_summary": "5 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:24.674733+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a56e79e14cd96687c53a115469dc2e84a3e28197b79dce19bf84dc8640754738\"",
@@ -35115,7 +35249,8 @@
       "dietary_summary": "1 vegan, 8 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:28.990236+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"6b121357d4dca89c0127f0a6597ad65c8117bb3c385eb0b0d5d6c24549433c93\"",
@@ -35422,7 +35557,8 @@
       "dietary_summary": "2 vegan, 11 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:34.341807+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0ad70290a75feffafe851829c3286bea87a2f2a9c7c1ca69cee912ae7f46f8d7\"",
@@ -35682,7 +35818,8 @@
       "dietary_summary": "2 vegan, 4 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:39.185730+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"d4abd8337b8d87742f0de8c0958ea6dd0d417fb8343cddc7f54c9f42e61a8df4\"",
@@ -35942,7 +36079,8 @@
       "dietary_summary": "12 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:44.084167+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6d9be12cf4af3d2fc827c1327815a97221914825f7768a422fc3b51128f0ab68\"",
@@ -36110,7 +36248,8 @@
       "dietary_summary": "1 vegan, 5 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:48.363598+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"feadc899ef75d3837748f62cc1cf67cb7b006d5b005e6ad7d5b95b69c9281196\"",
@@ -36276,7 +36415,8 @@
       "dietary_summary": "2 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:52.946307+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ef146fffa2489dce6673ab432276363d4abeb640910abad88b1d932a85c8b678\"",
@@ -36546,7 +36686,8 @@
       "dietary_summary": "4 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:33:57.740973+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"15e5bfbc47b24e9e845fffea052dcc56b072919e7a2eb903165e0897742234bb\"",
@@ -36808,7 +36949,8 @@
       "dietary_summary": "3 vegan, 11 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:02.497429+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"968a1fa615a4e1cf45546262d40524d6be85b767c90cbb0e700d337277963b88\"",
@@ -37224,7 +37366,8 @@
       "dietary_summary": "10 vegan, 7 vegetarian, 28 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:08.427676+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"d7001a32a14d6fb7088c95467e87b45c328794f646f706a50de835ff7db841fb\"",
@@ -37484,7 +37627,8 @@
       "dietary_summary": "2 vegan, 5 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:13.436275+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"9a8133a5bf00d7c833b1a468d98e6630cde82bc829dee8fbdc9185854fa44e19\"",
@@ -37662,7 +37806,8 @@
       "dietary_summary": "1 vegan, 4 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:17.813334+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6adb87c4fb80d632261852861b394f02da5846e16ad3270d9b6f26c2ba51079f\"",
@@ -37923,7 +38068,8 @@
       "dietary_summary": "2 vegan, 11 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:22.437316+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"38fcd2dfc312c9f945d0aa3f9485c162a6afba6f149a5e97b227159fc4a80e59\"",
@@ -38092,7 +38238,8 @@
       "dietary_summary": "5 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:27.119132+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"359b5c161805e68a332728b95307fad00a191e91e48cf67faf1b9e0262d9a8df\"",
@@ -38354,7 +38501,8 @@
       "dietary_summary": "4 vegan, 8 vegetarian, 11 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:31.634200+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"c1ade0eeb1db59d16053a9527bd1749bdf6b26e3ac67256e5ce94a7825eb12b0\"",
@@ -38650,7 +38798,8 @@
       "dietary_summary": "1 gluten-free option across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:36.940705+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"dbc1f53943067e5e1e0cce2f49d35f675b2740f4e0361529621958e2f022f4bc\"",
@@ -38945,7 +39094,8 @@
       "dietary_summary": "14 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:42.631345+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"544c260fa8538c150df5ff0d4c0114e7412254f424fa00d127973628cb0267eb\"",
@@ -39208,7 +39358,8 @@
       "dietary_summary": "10 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:47.458894+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"26011ca25655f15c5dc1089b8c750ccdcf22b206188ee4a84e4a58cf88b8ee99\"",
@@ -39542,7 +39693,8 @@
       "dietary_summary": "3 vegan, 13 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:44:56.075033+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"62d3358765e86271e0113acce14cec4641a50efdb3470f271830bbc183b196bd\"",
@@ -39821,7 +39973,8 @@
       "dietary_summary": "10 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:34:58.441898+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"6b38d811ec6e22250f14f48c39be47bed72a3a9c5e37fe68f4084feae9a9bd12\"",
@@ -40208,7 +40361,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:02.730649+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"c65e0a18f157f3096b8ea6374d84be01522dd5193d8aeacf84e7773719992e33\"",
@@ -40515,7 +40669,8 @@
       "dietary_summary": "5 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:07.820108+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"ab66d9eef036667de19ef9c78bbfd1b44b7d4ff67c47a5907b8a8739d8f3fc76\"",
@@ -40812,7 +40967,8 @@
       "dietary_summary": "5 vegan, 11 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:12.814412+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"d516f2e6398cca2895d8c7dbb3aaa9aa2417e09908542e43e00723d2b83a4c6e\"",
@@ -40980,7 +41136,8 @@
       "dietary_summary": "2 vegan, 4 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:17.144190+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"32c509971201c610edf6a3fa64724da79a44b5f2054d0a36b983ce9e7e9928c0\"",
@@ -41340,7 +41497,8 @@
       "dietary_summary": "12 vegan, 9 vegetarian, 18 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:22.966500+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"894f0b61defd966b5d30517e7b5c590b7b2f2995650b375e6a4560d7abb2ef23\"",
@@ -41655,7 +41813,8 @@
       "dietary_summary": "2 vegan, 9 vegetarian, 17 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:45:01.196395+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"07b262b88fa6b066db7404156c4bdcae0836e0155bf9c99dd97d5833506befa0\"",
@@ -41961,7 +42120,8 @@
       "dietary_summary": "9 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:49.606971+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"6bb1c29ba900041c2eab6a350078565ff18491c2a0a4c202d3b6d10743594f4a\"",
@@ -42267,7 +42427,8 @@
       "dietary_summary": "16 vegan, 5 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:54.332121+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7720174be50055997311e791674ee95b14836d71ccbc003785427ef49bef2e94\"",
@@ -42528,7 +42689,8 @@
       "dietary_summary": "13 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:35:59.475879+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"d372bd015c52c82f6cae92565ab9f58f405b18704048ac5551e77fa6831c725d\"",
@@ -42801,7 +42963,8 @@
       "dietary_summary": "6 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:04.114748+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"cb046afb93a0ce68ecc7c9235d909acb60610f38e387329fa57cabf53fd46063\"",
@@ -43071,7 +43234,8 @@
       "dietary_summary": "5 vegan, 2 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:08.928624+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"86f1aef6f3a19acb45573021bb10646d7ab82f4ce7e46972757e2d8dda5c5456\"",
@@ -43248,7 +43412,8 @@
       "dietary_summary": "1 vegan, 4 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:13.629846+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"18ec61b0da2ba7a91eeb327a3fb09e8b84ed768dfc9f34ed7d572bc7db9acd8e\"",
@@ -43509,7 +43674,8 @@
       "dietary_summary": "6 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:18.393173+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"f0cf82418e2d4e9deaa26e98d92ef60357c034a7913c676074344c4deeca3bf9\"",
@@ -43788,7 +43954,8 @@
       "dietary_summary": "3 vegan, 10 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:23.538282+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"934cd443e31cf9df7b5c88f28b5bf315681d82afceaca967b3aa37198f764f08\"",
@@ -43954,7 +44121,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:27.982309+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a4158bcaeac68ad6a8691e971cec37a49a2d055c1daea2777646d18e1ad60066\"",
@@ -44325,7 +44493,8 @@
       "dietary_summary": "8 vegan, 10 vegetarian, 20 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:33.042408+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"5390b3015923233b8df16978d383fef6c54b78363478352758b78b3709e8a1b1\"",
@@ -44585,7 +44754,8 @@
       "dietary_summary": "12 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:45:06.282549+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"5b9bc732264a7e0f51bd3a2a900875145c218f30b3670bb4a29b8a828fb2c62b\"",
@@ -44761,7 +44931,8 @@
       "dietary_summary": "1 vegan, 6 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:42.596989+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"4d3b7dfce4944a609aa051f5e3c3de5d66509e589b912d80d4d48280e9561d00\"",
@@ -45077,7 +45248,8 @@
       "dietary_summary": "3 vegan, 10 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:47.854928+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"2df7022aad624efd436e22aba3784f56bca19c1ae3655ba4882f2ba39058f672\"",
@@ -45357,7 +45529,8 @@
       "dietary_summary": "2 vegan, 6 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:52.613447+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"467ada67363087327a3ec891139147b8550c566fcf8225e401bd13842c5d3f20\"",
@@ -45646,7 +45819,8 @@
       "dietary_summary": "14 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:36:57.853143+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"ea110a8a933ea62fe82de93e8ebd1b35feea852a034d2ad49ebaf4f55387c021\"",
@@ -45858,7 +46032,8 @@
       "dietary_summary": "3 vegan, 3 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:02.733279+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"96631ff0a9dca813431f66b3a0edb34bd0f8895cf29706bcdea60c6d4a54ca27\"",
@@ -46155,7 +46330,8 @@
       "dietary_summary": "15 vegan, 7 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:07.428134+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"905fe2bf1b5a1491c26cd206755ad7a0a90f86cceb65507af416cf3fca5c817d\"",
@@ -46416,7 +46592,8 @@
       "dietary_summary": "2 vegan, 2 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:12.101369+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7cc613aa15f4e5e109a2a326a90aeec47c6b28dff867f9ecb33a60c2059829e6\"",
@@ -46592,7 +46769,8 @@
       "dietary_summary": "2 vegan, 3 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:17.019706+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"df689d8ff4bb7a22dcae26c65113c71772021a2ba71ef8d8ba2e374993ce9c38\"",
@@ -46761,7 +46939,8 @@
       "dietary_summary": "1 vegan, 5 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:22.086322+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"fbb4fd39b6e8abb62c9f8903dbf9a9197236156b60fdde3f43e38942d94f0bbf\"",
@@ -47022,7 +47201,8 @@
       "dietary_summary": "11 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:28.955198+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"58072c89a7b34fa9f9c0dceeaaa7f619894e1836763ba77b53db5041fff47dd0\"",
@@ -47189,7 +47369,8 @@
       "dietary_summary": "2 vegan, 2 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:33.783977+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b4f370ca7c6f23f2bdb20e8a6c38c98e0a5151aa68da564b8dc6f48730813754\"",
@@ -47459,7 +47640,8 @@
       "dietary_summary": "5 vegan, 6 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:38.435015+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"fcff5a2ea286ec93822df86761231222b7e52f47a3953d6bf97f1de385c70fa6\"",
@@ -47854,7 +48036,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:43.209602+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"c7f22bd9a6a61c210c0a775d45d784e39ba80a1008bf4427fb0bd70171631b91\"",
@@ -48115,7 +48298,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:45:10.999558+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"80bd0642c2762eadea415c1f60243aafc5613db15f44ec7b4cced18d72fbe3a1\"",
@@ -48388,7 +48572,8 @@
       "dietary_summary": "15 vegan, 2 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:37:53.146845+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b759514890899558d13f73a34cc520ed0c0c670a631ed161528ea4a8df008675\"",
@@ -48695,7 +48880,8 @@
       "dietary_summary": "5 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:45:16.404665+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"8699ab53cdb16fc9dd1778e49b0f2ea734a623686a8f4f5ce0bf02052e7da012\"",
@@ -49019,7 +49205,8 @@
       "dietary_summary": "11 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:38:03.587700+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ea41c579e7a3e21aa1a368d18fa282cd27fcb559b31d9f330469612a8986d6b6\"",
@@ -49343,7 +49530,8 @@
       "dietary_summary": "3 vegan, 10 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:38:08.085579+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"c9243ceb3ac983a760cc2dbb0530da3b6a030c542bf58939045195a10b434ead\"",
@@ -49738,7 +49926,8 @@
       "dietary_summary": "11 vegan, 8 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:38:13.661514+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"60211e3de704a94066a749ec9f703dae95b10c4fd8dd6d2be3a3c3ddcce16aa8\"",
@@ -50035,7 +50224,8 @@
       "dietary_summary": "8 vegan, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T16:38:18.962075+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"75616d2d087a7b8226a1feb7580006471f14f4432d112ca7a82ee5a2124fc038\"",
@@ -50395,7 +50585,8 @@
       "dietary_summary": "8 vegan, 10 vegetarian, 15 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:21.324384+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"3899c148eee0d4abc2aa411ad3f36a85069fb24bca39e7c13893d4a9cd1077cb\"",
@@ -50656,7 +50847,8 @@
       "dietary_summary": "4 vegan, 6 vegetarian, 15 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:27.297276+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"31c8a891a926c211b47ca85c17c621e304ef8e8ca2dd906a244e2974adfc74b3\"",
@@ -50935,7 +51127,8 @@
       "dietary_summary": "2 vegan, 9 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:32.769380+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"66414d417f3e70eb0247f6963504c6ef840e65653a4f1c2f11c906f7314bb59d\"",
@@ -51199,7 +51392,8 @@
       "dietary_summary": "9 vegetarian, 8 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:37.846635+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7b1872d9765f78387b1831f8d256b5d6f9a1fbd51b6708e8771fcf823d7c1b4b\"",
@@ -51533,7 +51727,8 @@
       "dietary_summary": "16 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:43.654026+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"25fcf7e562c935a546fa60b4dc05cc9cb41ba7b93a479c9eb36bf6385ef5f553\"",
@@ -51894,7 +52089,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:50.113226+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"3b0f480a9b95f89c3a3f372193fe9c7fec142080d8a70f6210247711de768a85\"",
@@ -52157,7 +52353,8 @@
       "dietary_summary": "10 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:26:55.173433+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"385ad4e6ad995899e8a7dab602a246b9307b400ab31a8cc834435833c1093230\"",
@@ -52437,7 +52634,8 @@
       "dietary_summary": "10 vegetarian, 2 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:00.988474+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"c230f989379e3bbea7ea4404dd798da4096b36d25ae0a5ea39cc860f50c08d26\"",
@@ -52697,7 +52895,8 @@
       "dietary_summary": "2 vegan, 6 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:07.142970+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"4a36460e513b60ffb8c8854af34d3d71125bb32b067685bc7c63d8c73aeb9b5e\"",
@@ -52959,7 +53158,8 @@
       "dietary_summary": "2 vegan, 10 vegetarian, 14 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:12.924272+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"2e448a040981442109029652a8df66b08e319ece8115b0ac6cf1749806a7571b\"",
@@ -53228,7 +53428,8 @@
       "dietary_summary": "3 vegan, 5 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:19.183165+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"d049204e29b3180ef3bb323ca51692e6ea76b7cf894cb9092957a259abf65d1f\"",
@@ -53395,7 +53596,8 @@
       "dietary_summary": "1 vegetarian option across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:24.007278+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"9b24224ef1710d1c4ca973f71b1782d66c132b40b7006ae990667a5fd96f1ce8\"",
@@ -53701,7 +53903,8 @@
       "dietary_summary": "4 vegan, 10 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:29.578889+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0b947bc9c426697eb7f6c6802b9c34e37b55ef2e2ac77057f3e4319dc3b19b01\"",
@@ -53963,7 +54166,8 @@
       "dietary_summary": "3 vegan, 10 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:34.798216+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7de465645ca29930051568d717051e9f3e1c1dc6206b48e8c1c65f1d6b5c71a0\"",
@@ -54130,7 +54334,8 @@
       "dietary_summary": "3 vegan, 2 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:39.631250+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"9c2140968759fb3b2e09077bc2e6dd95a3511b5af5a13fe304151839e77ee45e\"",
@@ -54390,7 +54595,8 @@
       "dietary_summary": "2 vegan, 12 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:44.326360+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b049979ff7f14ae38a744f1a0fa28c21c2279e2686258957b8410100b33bd5de\"",
@@ -54651,7 +54857,8 @@
       "dietary_summary": "10 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:49.516460+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"b690d20ef6e4bb22066b8c55ff26bec5f8869b77384d8db3e032f2343f68afc6\"",
@@ -54912,7 +55119,8 @@
       "dietary_summary": "9 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:54.304155+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"99848b13bf7c2b5ba1b881dc9f329222f82510bdef6f80f0d9f29c98ec9f2ecd\"",
@@ -55081,7 +55289,8 @@
       "dietary_summary": "1 vegan, 3 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:27:59.239161+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"5c7f1df8a8a1ea8677f69a64ca8791088034abd5be77659240af0ccc98851f83\"",
@@ -55342,7 +55551,8 @@
       "dietary_summary": "2 vegan, 7 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:04.781089+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ca404a99e9515e9bb6f0c97b3ff4e611d97ee641376ee4603de218973206f947\"",
@@ -55519,7 +55729,8 @@
       "dietary_summary": "1 vegan, 6 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:10.307461+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"cbf49dd907078d8257fcff8aea5ce0ea9f8d21cd6d099ea564238cc0ff1027b3\"",
@@ -55780,7 +55991,8 @@
       "dietary_summary": "11 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:16.143567+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"108f93c601fcb6f9f02d3d6e37e3f30d4ca63d79385158cfb41d665eadeeb326\"",
@@ -56041,7 +56253,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:21.599579+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"a4e7b4d4218b7bc23f65dec233c96ab2a07374335a6a7031495f6213ffd7c24c\"",
@@ -56225,7 +56438,8 @@
       "dietary_summary": "4 vegan, 3 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:26.707134+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"edc0e3696eba9521c95f1a737047bbb8dc0863af16d98da7aa03b54a09f0dd21\"",
@@ -56576,7 +56790,8 @@
       "dietary_summary": "4 vegan, 9 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:32.439481+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"4952b00a96117279297e31315efee0f142482af3092b6fcca2193c6ec156e747\"",
@@ -56838,7 +57053,8 @@
       "dietary_summary": "11 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:37.729416+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"6059ec29485608ee8d160f31bd3603ed7a3e8f70b4313ad9bbd717f149ecbc91\"",
@@ -57005,7 +57221,8 @@
       "dietary_summary": "2 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:43.191822+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"7d151749b6985e36a3b565e2bfa4c3a69e7d8e54c0940c5fadd121914463008a\"",
@@ -57276,7 +57493,8 @@
       "dietary_summary": "8 vegan, 1 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:48.686264+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"e7f2e0d1b08bb009431e95f9eeb30b2ac86fc17ac611dfa252b38ccb33898c15\"",
@@ -57576,7 +57794,8 @@
       "dietary_summary": "6 vegan options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:28:54.911676+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"c8ed446bc4cfe2d3fb6d56b5e13c9d5d7479db09ec51603b223e37f207ca43cf\"",
@@ -57983,7 +58202,8 @@
       "dietary_summary": "4 vegan, 10 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:00.896807+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"340be3263821724fd64fb692af8ed479f02b371227ddf736d49558d7cbea7bbb\"",
@@ -58151,7 +58371,8 @@
       "dietary_summary": "1 vegan, 1 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:05.421827+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"160b1944b77752b8094bdc29e3f51e922a50c2ccb7c4cd4446862896dd7ccd4d\"",
@@ -58438,7 +58659,8 @@
       "dietary_summary": "6 vegan, 5 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:10.305111+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"97b842c2b1a338b8f5532d851e9dbacc9cdd40c9fc4ba2b22ec017f0082ff109\"",
@@ -58719,7 +58941,8 @@
       "dietary_summary": "4 vegan, 10 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:15.250182+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"177b3d99740a1ffc6d3abba54d5af46771d90975eae8792a63d60701c5681859\"",
@@ -58981,7 +59204,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:20.848316+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"8bcd19832b56c6e187df45ee8efdb63b437dc1fc186e0bff9cc1186fe070a416\"",
@@ -59279,7 +59503,8 @@
       "dietary_summary": "12 vegetarian, 10 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:25.887225+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"31a9a55431fba05727bc3265b16f3be7554bd24c16327bb4bd5976d815cf4b61\"",
@@ -59543,7 +59768,8 @@
       "dietary_summary": "14 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:31.758464+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"3b0c2930fd07dc061b622ba4c23a762a8192e7457b9fb4214a62462d5838d3ee\"",
@@ -59822,7 +60048,8 @@
       "dietary_summary": "10 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:36.837907+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"85a949999f6ec08aaca6bd124c83f603e68466b5355a9802aefa884eccb34ec6\"",
@@ -60084,7 +60311,8 @@
       "dietary_summary": "7 vegan, 7 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:41.945543+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"5cb6979f3ae53596a3ceedc91b4d2dff33615a1414a5423f58b38eaca048c39d\"",
@@ -60381,7 +60609,8 @@
       "dietary_summary": "6 vegan, 4 vegetarian, 15 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:46.881642+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"5c329ac9f6902fbd863653410454ac32ac4cb9111c7c99047a94d14ebb61b3f5\"",
@@ -60659,7 +60888,8 @@
       "dietary_summary": "4 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:52.011435+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"f2fca3926bdedf48313bc4b4e46283954e6ff428fec5c0db5baaa841fef06844\"",
@@ -60958,7 +61188,8 @@
       "dietary_summary": "1 vegan, 13 vegetarian, 13 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:29:57.013608+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"49f4c90e1d25d26baff66793da5636a6b8cddc0a9c623eff03900ec475d3a8cf\"",
@@ -61236,7 +61467,8 @@
       "dietary_summary": "4 vegan, 6 vegetarian, 10 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:01.831361+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"465aaadb0e065852bf6e7b76f85d4adb120a6f1c833179af56c2dd1392dffd77\"",
@@ -61569,7 +61801,8 @@
       "dietary_summary": "8 vegetarian, 6 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:06.635585+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"194c91cadf8df0687dc24a5b5af1cc117ce0677c7d569144bde94c8a171d550d\"",
@@ -61771,7 +62004,8 @@
       "dietary_summary": "",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:11.144682+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"fd740b0155b7693c1c157c58e9d181156d181a65cd6392db9ed96d2e8bc5b510\"",
@@ -62085,7 +62319,8 @@
       "dietary_summary": "4 vegan, 10 vegetarian, 17 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:45:21.044545+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"56b0eebfde7d2c1739749e9b0195f6e4a33030baa852e8cbbe9fd466e93e666f\"",
@@ -62261,7 +62496,8 @@
       "dietary_summary": "2 vegan, 1 vegetarian, 4 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:22.825504+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ecc447c399289134a956b8b71cf3d08d6d6904f426b6dae73a451b0f6034da84\"",
@@ -62429,7 +62665,8 @@
       "dietary_summary": "6 vegetarian, 5 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:28.954412+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ab463cf33840f5e079dadcc2e18830e9643bb59db102b567217427a49d3ba908\"",
@@ -62753,7 +62990,8 @@
       "dietary_summary": "16 vegetarian, 7 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:35.789690+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"0563c56e64d92123de39588f337ccef4c05408592820e4fdf95c9a4d36cf141b\"",
@@ -63014,7 +63252,8 @@
       "dietary_summary": "1 vegan, 1 vegetarian, 1 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:42.304804+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"f03160ef68ece2c6b8a86765e3929d078a0dbfebd602fe0aaa01c6f554d20c57\"",
@@ -63182,7 +63421,8 @@
       "dietary_summary": "6 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:47.636170+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"ae12860b4d33465ec1c593945d0ae83cab906175fed250b29857f610eec2ae7b\"",
@@ -63479,7 +63719,8 @@
       "dietary_summary": "15 vegan, 7 vegetarian, 3 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:53.027971+00:00"
-    }
+    },
+    "new_this_season": true
   },
   {
     "@odata.etag": "W/\"fa38bd9edc5a6920991dce432a4eb7775edb22d40370812e2fdc9a2d432016c8\"",
@@ -63655,7 +63896,8 @@
       "dietary_summary": "4 vegetarian options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:30:58.660731+00:00"
-    }
+    },
+    "new_this_season": false
   },
   {
     "@odata.etag": "W/\"d98400c2cbe7c5143c698d9df3e4c62c3e320e6854e3993819e7dcb7d0eecca9\"",
@@ -63831,6 +64073,7 @@
       "dietary_summary": "3 vegan, 2 vegetarian, 9 gluten-free options across the menus.",
       "model": "qwen2.5:7b",
       "generated_at": "2026-06-16T19:31:03.536501+00:00"
-    }
+    },
+    "new_this_season": true
   }
 ]

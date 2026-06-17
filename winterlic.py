@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -81,6 +82,55 @@ def detect_season(today: datetime | None = None) -> tuple[str, int]:
     return ("Winterlicious", today.year)
 
 
+def _name_key(name: str | None) -> str:
+    """Normalize a restaurant name for cross-campaign comparison."""
+    return re.sub(r"[^a-z0-9]+", "", (name or "").lower())
+
+
+def prior_other_season(season: str, year: int) -> tuple[str, int]:
+    """The opposite-season edition that ran most recently before this one.
+
+    Summerlicious follows that year's Winterlicious; Winterlicious follows the
+    previous year's Summerlicious.
+    """
+    if season == "Summerlicious":
+        return ("Winterlicious", year)
+    return ("Summerlicious", year - 1)
+
+
+def mark_new_this_season(restaurants: list, season: str, year: int) -> int:
+    """Tag each restaurant with `new_this_season` by diffing names against the
+    previous opposite-season archive. Returns how many were flagged new.
+
+    If the prior archive is missing or implausibly small (e.g. the City API
+    served a near-empty set after a festival ended), we skip tagging rather
+    than flag the entire roster as "new".
+    """
+    other_season, other_year = prior_other_season(season, year)
+    archive = HERE / f"menus-{other_season}-{other_year}.json"
+    prev_keys: set[str] = set()
+    if archive.exists():
+        try:
+            prev = json.loads(archive.read_text(encoding="utf-8"))
+            prev_keys = {_name_key(r.get("restaurant_name")) for r in prev}
+        except (json.JSONDecodeError, OSError):
+            prev_keys = set()
+    if len(prev_keys) < 20:
+        print(
+            f"Skipping new-this-season tagging: prior archive "
+            f"{archive.name} missing or too small ({len(prev_keys)} names)."
+        )
+        for r in restaurants:
+            r.pop("new_this_season", None)
+        return 0
+    new_count = 0
+    for r in restaurants:
+        is_new = _name_key(r.get("restaurant_name")) not in prev_keys
+        r["new_this_season"] = is_new
+        new_count += is_new
+    return new_count
+
+
 def write_json(path: Path, payload) -> None:
     with path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
@@ -146,6 +196,10 @@ def main() -> None:
                         )
             except (json.JSONDecodeError, OSError) as e:
                 print(f"Warning: could not preserve prior AI fields ({e}).")
+
+        new_count = mark_new_this_season(restaurants, season, year)
+        if new_count:
+            print(f"Flagged {new_count} restaurants new this season.")
 
         write_json(latest_path, restaurants)
         write_json(archive_path, restaurants)

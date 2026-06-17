@@ -394,6 +394,7 @@ header::after {
 .badge.veg      { background: #e6fffa; color: #2c7a7b; border-color: transparent; }
 .badge.access   { background: #ebf8ff; color: #2b6cb0; border-color: transparent; }
 .badge.hotel    { background: #fdf2f8; color: #be185d; border-color: transparent; }
+.badge.new-season { background: #fef3c7; color: #b45309; border-color: transparent; font-weight: 700; }
 
 [data-theme="dark"] .badge.hood     { background: rgba(173,107,210,0.18); color: #d6a8f5; }
 [data-theme="dark"] .badge.cuisine  { background: rgba(106,169,255,0.18); color: #cfe1ff; }
@@ -401,6 +402,7 @@ header::after {
 [data-theme="dark"] .badge.veg      { background: rgba(16,185,129,0.18); color: #9bf0d2; }
 [data-theme="dark"] .badge.access   { background: rgba(106,169,255,0.18); color: #cfe1ff; }
 [data-theme="dark"] .badge.hotel    { background: rgba(190,24,93,0.20); color: #ffb6d3; }
+[data-theme="dark"] .badge.new-season { background: rgba(245,158,11,0.22); color: #ffe08a; }
 
 .description-text {
     font-size: 0.88rem; color: var(--text-muted); line-height: 1.45;

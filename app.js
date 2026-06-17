@@ -94,6 +94,9 @@
     const cuisineFilter = $("cuisineFilter");
     const neighbourhoodFilter = $("neighbourhoodFilter");
     const priceFilter = $("priceFilter");
+    const newFilter = $("newFilter");
+    const newFilterGroup = $("newFilterGroup");
+    const newFilterLabel = $("newFilterLabel");
     const vegFilter = $("vegFilter");
     const favFilter = $("favFilter");
     const michelinFilter = $("michelinFilter");
@@ -156,6 +159,10 @@
 
     function isMichelin(r) {
         return !!(r && r.description && /\bmichelin\b/i.test(r.description));
+    }
+
+    function isNewThisSeason(r) {
+        return !!(r && r.new_this_season === true);
     }
 
     function priceNumber(menu) {
@@ -328,6 +335,10 @@
             if (title) title.textContent = label;
             document.title = `${label} — Toronto Prix-Fixe Menus`;
         }
+        if (newFilterLabel && meta.season) {
+            const shortSeason = meta.season.replace(/licious$/i, "");
+            newFilterLabel.textContent = `✨ New for ${shortSeason} ${meta.year || ""}`.trim();
+        }
         const subtitle = $("seasonSubtitle");
         if (subtitle && meta.dates_label) {
             subtitle.textContent = `${meta.dates_label} · Explore Toronto's culinary celebration`;
@@ -371,6 +382,11 @@
 
     function initApp(data) {
         restaurants = data;
+        // Only surface the "New this season" toggle when the data carries the
+        // new_this_season flag for at least one restaurant.
+        if (newFilterGroup) {
+            newFilterGroup.hidden = !restaurants.some(isNewThisSeason);
+        }
         populateFilters();
         renderCuisineChips();
         renderStatsBanner();
@@ -561,6 +577,7 @@
         if (params.has("cuisine")) cuisineFilter.value = params.get("cuisine");
         if (params.has("hood")) neighbourhoodFilter.value = params.get("hood");
         if (params.has("price")) priceFilter.value = params.get("price");
+        if (params.get("new") === "1") newFilter.checked = true;
         if (params.get("veg") === "1") vegFilter.checked = true;
         if (params.get("fav") === "1") favFilter.checked = true;
         if (params.get("michelin") === "1") michelinFilter.checked = true;
@@ -587,6 +604,7 @@
         if (cuisineFilter.value) params.set("cuisine", cuisineFilter.value);
         if (neighbourhoodFilter.value) params.set("hood", neighbourhoodFilter.value);
         if (priceFilter.value) params.set("price", priceFilter.value);
+        if (newFilter.checked) params.set("new", "1");
         if (vegFilter.checked) params.set("veg", "1");
         if (favFilter.checked) params.set("fav", "1");
         if (michelinFilter.checked) params.set("michelin", "1");
@@ -683,7 +701,7 @@
         appendOptions(neighbourhoodFilter, sortedHoods);
         appendOptions(priceFilter, sortedPrices);
 
-        [searchInput, cuisineFilter, neighbourhoodFilter, priceFilter, vegFilter, favFilter,
+        [searchInput, cuisineFilter, neighbourhoodFilter, priceFilter, newFilter, vegFilter, favFilter,
          michelinFilter, lunchFilter, dinnerFilter, bookableFilter, sortBy]
             .forEach((el) => el.addEventListener(el === searchInput ? "input" : "change", filterRestaurants));
     }
@@ -703,6 +721,7 @@
             cuisineFilter.value ||
             neighbourhoodFilter.value ||
             priceFilter.value ||
+            newFilter.checked ||
             vegFilter.checked ||
             favFilter.checked ||
             michelinFilter.checked ||
@@ -718,6 +737,7 @@
         cuisineFilter.value = "";
         neighbourhoodFilter.value = "";
         priceFilter.value = "";
+        newFilter.checked = false;
         vegFilter.checked = false;
         favFilter.checked = false;
         michelinFilter.checked = false;
@@ -776,6 +796,7 @@
                 const target = pType === "Lunch" ? r.Lunch : r.Dinner;
                 if (!target || target.price !== pVal) return false;
             }
+            if (newFilter.checked && !isNewThisSeason(r)) return false;
             if (onlyVeg && !hasVegOption(r.Lunch) && !hasVegOption(r.Dinner)) return false;
             if (onlyFav && !favorites.has(r.id)) return false;
             if (onlyMichelin && !isMichelin(r)) return false;
@@ -862,6 +883,7 @@
         const dinnerP = r.Dinner && r.Dinner.price;
 
         const badges = [];
+        if (isNewThisSeason(r)) badges.push(`<span class="badge new-season" title="New to this festival">✨ New</span>`);
         if (cuisineLabel) badges.push(`<span class="badge cuisine">${escapeHtml(cuisineLabel)}</span>`);
         if (hood) badges.push(`<span class="badge hood">📍 ${escapeHtml(hood)}</span>`);
         if (r.__dist != null) badges.push(`<span class="badge distance" title="From your location">📏 ${escapeHtml(formatDistance(r.__dist))}</span>`);
@@ -1063,6 +1085,7 @@
         // Badges
         const badges = [];
         const ai = r.ai || {};
+        if (isNewThisSeason(r)) badges.push(`<span class="badge new-season" title="New to this festival">✨ New</span>`);
         if (isMichelin(r)) badges.push(`<span class="badge michelin">⭐ Michelin</span>`);
         if (r.accessible_opt === "Yes") badges.push(`<span class="badge access">♿ Accessible</span>`);
         if (r.hotel_name) badges.push(`<span class="badge hotel">🏨 ${escapeHtml(r.hotel_name)}</span>`);
