@@ -1,16 +1,18 @@
 :root {
-    --primary: #0056b3;
-    --primary-strong: #003c80;
-    --accent: #ffd700;
-    --bg: #f4f7f6;
+    /* Summerlicious palette — warm tangerine + sunset, fresh teal accents */
+    --primary: #c2570a;
+    --primary-strong: #9a4408;
+    --accent: #ffc83d;
+    --fresh: #0d9488; /* teal pop for a summery secondary accent */
+    --bg: #fff7ef;
     --surface: #ffffff;
-    --surface-muted: #f8f9fa;
-    --text: #1f2937;
-    --text-muted: #6b7280;
-    --text-faint: #9aa3af;
-    --border: #e5e7eb;
-    --shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.14);
+    --surface-muted: #fdf1e7;
+    --text: #2b2118;
+    --text-muted: #7c6f63;
+    --text-faint: #a99c8d;
+    --border: #f0e2d4;
+    --shadow: 0 6px 16px rgba(120, 60, 0, 0.08);
+    --shadow-lg: 0 14px 30px rgba(120, 60, 0, 0.16);
     --radius: 12px;
     --radius-sm: 8px;
     --heart: #e74c3c;
@@ -20,16 +22,17 @@
 }
 
 [data-theme="dark"] {
-    --primary: #6aa9ff;
-    --primary-strong: #4c8ef8;
-    --accent: #ffd700;
-    --bg: #0f1419;
-    --surface: #1a2029;
-    --surface-muted: #232b36;
-    --text: #e7eaee;
-    --text-muted: #a3acba;
-    --text-faint: #6b7480;
-    --border: #2c333d;
+    --primary: #ffb066;
+    --primary-strong: #ff9d47;
+    --accent: #ffc83d;
+    --fresh: #2dd4bf;
+    --bg: #17120e;
+    --surface: #211a14;
+    --surface-muted: #2b231b;
+    --text: #f0e9e2;
+    --text-muted: #b7a89a;
+    --text-faint: #7d7064;
+    --border: #382e24;
     --shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
     --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.55);
 }
@@ -49,7 +52,7 @@ a { color: var(--primary); }
 
 /* ---------- Header ---------- */
 header {
-    background: linear-gradient(135deg, #0056b3, #1e3a8a 55%, #0f172a);
+    background: linear-gradient(135deg, #ff9d2f, #f76b3c 50%, #e23e57);
     color: white;
     padding: 2.25rem 1rem 2.5rem;
     box-shadow: var(--shadow);
@@ -60,8 +63,9 @@ header {
 header::after {
     content: "";
     position: absolute; inset: 0;
-    background: radial-gradient(900px 200px at 10% 0%, rgba(255,215,0,0.18), transparent 60%),
-                radial-gradient(700px 200px at 90% 100%, rgba(255,255,255,0.10), transparent 60%);
+    background: radial-gradient(420px 420px at 88% -40%, rgba(255,224,130,0.55), transparent 60%),
+                radial-gradient(900px 220px at 10% 0%, rgba(255,236,179,0.28), transparent 60%),
+                radial-gradient(760px 240px at 95% 120%, rgba(45,212,191,0.18), transparent 60%);
     pointer-events: none;
 }
 .header-inner {
@@ -112,6 +116,15 @@ header::after {
 .stat strong { color: var(--text); font-weight: 700; font-size: 1rem; }
 .stat .stat-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); }
 .stat .stat-sep { color: var(--text-faint); }
+.stat-clickable {
+    cursor: pointer; border-radius: 999px; padding: 0.15rem 0.6rem; margin: -0.15rem 0;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.stat-clickable:hover { background: var(--surface-muted); transform: translateY(-1px); }
+.stat-clickable:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.stat-clickable.active { background: var(--primary); }
+.stat-clickable.active strong,
+.stat-clickable.active .stat-label { color: #fff; }
 
 /* ---------- Cuisine quick chips ---------- */
 /* Cuisine picker (single trigger + popover) */

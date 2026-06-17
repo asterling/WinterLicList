@@ -165,6 +165,13 @@
         return !!(r && r.new_this_season === true);
     }
 
+    // Some source menus SHOUT their dish names in all caps. Title-case those for
+    // display only; leave already mixed-case names exactly as written.
+    function smartCaseDish(s) {
+        if (!s || /[a-z]/.test(s)) return s;
+        return s.toLowerCase().replace(/(^|[\s(/-])([a-z])/g, (_, sep, ch) => sep + ch.toUpperCase());
+    }
+
     function priceNumber(menu) {
         if (!menu || !menu.price) return null;
         const m = String(menu.price).match(/(\d+(?:\.\d+)?)/);
@@ -407,6 +414,7 @@
         const dinnerPrices = restaurants.map((r) => priceNumber(r.Dinner)).filter((n) => n !== null);
         const vegCount = restaurants.filter((r) => hasVegOption(r.Lunch) || hasVegOption(r.Dinner)).length;
         const bookableCount = restaurants.filter(isBookable).length;
+        const newCount = restaurants.filter(isNewThisSeason).length;
 
         const fmt = (n) => `$${Math.round(n)}`;
         const parts = [
@@ -414,8 +422,9 @@
         ];
         if (lunchPrices.length) parts.push(statHTML(`${fmt(Math.min(...lunchPrices))}–${fmt(Math.max(...lunchPrices))}`, "Lunch"));
         if (dinnerPrices.length) parts.push(statHTML(`${fmt(Math.min(...dinnerPrices))}–${fmt(Math.max(...dinnerPrices))}`, "Dinner"));
-        parts.push(statHTML(vegCount, "Veg-friendly"));
-        parts.push(statHTML(bookableCount, "Bookable"));
+        if (newCount) parts.push(statHTML(newCount, "✨ New", "new"));
+        parts.push(statHTML(vegCount, "Veg-friendly", "veg"));
+        parts.push(statHTML(bookableCount, "Bookable", "bookable"));
         if (seasonMeta && (seasonMeta.dates_label || (seasonMeta.dates_start && seasonMeta.dates_end))) {
             const label = seasonMeta.dates_label || formatDateRange(seasonMeta.dates_start, seasonMeta.dates_end);
             parts.push(statHTML(label, "Festival"));
@@ -425,8 +434,32 @@
         statsBanner.hidden = false;
     }
 
-    function statHTML(value, label) {
-        return `<span class="stat"><strong>${escapeHtml(String(value))}</strong><span class="stat-label">${escapeHtml(label)}</span></span>`;
+    // Optional `filterKey` makes the stat a one-click shortcut to its filter.
+    function statHTML(value, label, filterKey) {
+        const interactive = filterKey
+            ? ` class="stat stat-clickable" role="button" tabindex="0" data-filter="${escapeHtml(filterKey)}" title="Show only these"`
+            : ` class="stat"`;
+        return `<span${interactive}><strong>${escapeHtml(String(value))}</strong><span class="stat-label">${escapeHtml(label)}</span></span>`;
+    }
+
+    const STAT_FILTERS = { new: () => newFilter, veg: () => vegFilter, bookable: () => bookableFilter };
+    function handleStatActivate(e) {
+        const stat = e.target.closest(".stat-clickable");
+        if (!stat) return;
+        if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        const getEl = STAT_FILTERS[stat.dataset.filter];
+        const el = getEl && getEl();
+        if (!el) return;
+        el.checked = !el.checked;
+        filterRestaurants();
+    }
+
+    function syncStatActive() {
+        statsBanner.querySelectorAll(".stat-clickable").forEach((s) => {
+            const f = STAT_FILTERS[s.dataset.filter];
+            s.classList.toggle("active", !!(f && f() && f().checked));
+        });
     }
 
     // ---------- Cuisine picker (trigger button + popover) ----------
@@ -778,6 +811,9 @@
 
     resetBtn.addEventListener("click", resetFilters);
 
+    statsBanner.addEventListener("click", handleStatActivate);
+    statsBanner.addEventListener("keydown", handleStatActivate);
+
     function filterRestaurants() {
         const term = searchInput.value.toLowerCase();
         const cuisine = cuisineFilter.value;
@@ -815,6 +851,7 @@
 
         updateActiveChip();
         updateUrlState();
+        syncStatActive();
 
         resultCount.textContent =
             sorted.length === restaurants.length
@@ -912,7 +949,7 @@
         }
 
         const standoutsHtml = (ai.standouts && ai.standouts.length)
-            ? `<div class="standouts"><span class="standouts-label">Standouts</span> ${ai.standouts.map((s) => `<span class="standout-chip">${escapeHtml(s)}</span>`).join("")}</div>`
+            ? `<div class="standouts"><span class="standouts-label">Standouts</span> ${ai.standouts.map((s) => `<span class="standout-chip">${escapeHtml(smartCaseDish(s))}</span>`).join("")}</div>`
             : "";
 
         const vibeHtml = (ai.vibe_tags && ai.vibe_tags.length)
