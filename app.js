@@ -50,7 +50,10 @@
         let name = "";
         for (const c of list) if (CUISINE_EMOJI[c]) { name = c; break; }
         if (!name) name = list[0] || "";
-        const pal = paletteFor(name || "default");
+        // Assign the header tone per restaurant (stable id) rather than per
+        // cuisine, so the four tones stay evenly balanced — hashing by cuisine
+        // let common cuisines (e.g. Italian) dominate one colour.
+        const pal = paletteFor(r.id || r.restaurant_name || name || "default");
         return { emoji: CUISINE_EMOJI[name] || DEFAULT_EMOJI, from: pal.from, to: pal.to, name };
     }
 
