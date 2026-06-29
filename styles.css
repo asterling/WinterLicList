@@ -1,19 +1,19 @@
 :root {
-    /* Summerlicious palette — warm tangerine + sunset, fresh teal accents */
-    --primary: #c2570a;
-    --primary-strong: #9a4408;
-    --accent: #ffc83d;
-    --fresh: #0d9488; /* teal pop for a summery secondary accent */
+    /* Summerlicious palette — refined terracotta + warm sand, teal accents */
+    --primary: #b0532e;
+    --primary-strong: #8c3f22;
+    --accent: #d99b3e;
+    --fresh: #0f766e; /* deep teal secondary accent */
     --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-    --ring: rgba(194, 87, 10, 0.18);
-    --cta-glow: rgba(194, 87, 10, 0.28);
-    --bg: #fff7ef;
+    --ring: rgba(176, 83, 46, 0.18);
+    --cta-glow: rgba(176, 83, 46, 0.22);
+    --bg: #faf6f1;
     --surface: #ffffff;
-    --surface-muted: #fdf1e7;
-    --text: #2b2118;
-    --text-muted: #7c6f63;
-    --text-faint: #a99c8d;
-    --border: #f0e2d4;
+    --surface-muted: #f4ede4;
+    --text: #2a2420;
+    --text-muted: #75695f;
+    --text-faint: #a89c90;
+    --border: #ebe1d5;
     --shadow: 0 6px 16px rgba(120, 60, 0, 0.08);
     --shadow-lg: 0 14px 30px rgba(120, 60, 0, 0.16);
     --radius: 12px;
@@ -25,13 +25,13 @@
 }
 
 [data-theme="dark"] {
-    --primary: #ffb066;
-    --primary-strong: #ff9d47;
-    --accent: #ffc83d;
+    --primary: #e0875c;
+    --primary-strong: #d2734a;
+    --accent: #d99b3e;
     --fresh: #2dd4bf;
-    --ring: rgba(255, 176, 102, 0.26);
+    --ring: rgba(224, 135, 92, 0.24);
     --cta-glow: rgba(0, 0, 0, 0.45);
-    --bg: #17120e;
+    --bg: #18140f;
     --surface: #211a14;
     --surface-muted: #2b231b;
     --text: #f0e9e2;
@@ -57,7 +57,7 @@ a { color: var(--primary); }
 
 /* ---------- Header ---------- */
 header {
-    background: linear-gradient(135deg, #ff9d2f, #f76b3c 50%, #e23e57);
+    background: linear-gradient(135deg, #e0954e, #c25c3a 52%, #9b4a45);
     color: white;
     padding: 2.25rem 1rem 2.5rem;
     box-shadow: var(--shadow);
@@ -68,9 +68,9 @@ header {
 header::after {
     content: "";
     position: absolute; inset: 0;
-    background: radial-gradient(420px 420px at 88% -40%, rgba(255,224,130,0.55), transparent 60%),
-                radial-gradient(900px 220px at 10% 0%, rgba(255,236,179,0.28), transparent 60%),
-                radial-gradient(760px 240px at 95% 120%, rgba(45,212,191,0.18), transparent 60%);
+    background: radial-gradient(460px 460px at 88% -45%, rgba(255,228,170,0.32), transparent 62%),
+                radial-gradient(900px 220px at 8% 0%, rgba(255,240,212,0.14), transparent 60%),
+                radial-gradient(760px 240px at 96% 125%, rgba(45,212,191,0.12), transparent 60%);
     pointer-events: none;
 }
 .header-inner {
