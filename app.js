@@ -294,9 +294,20 @@
     }
 
     // ---------- Load ----------
+    // The full placeholder (with the "short rib" example) overflows on narrow
+    // phones; swap to a concise one below 560px.
+    const SEARCH_PH_FULL = "Search restaurants, cuisines, or dishes (e.g. 'short rib')";
+    const SEARCH_PH_SHORT = "Search dishes or restaurants";
+    const narrowMQ = window.matchMedia("(max-width: 560px)");
+    function syncSearchPlaceholder() {
+        searchInput.placeholder = narrowMQ.matches ? SEARCH_PH_SHORT : SEARCH_PH_FULL;
+    }
+    narrowMQ.addEventListener("change", syncSearchPlaceholder);
+
     window.addEventListener("DOMContentLoaded", async () => {
         loadTheme();
         loadFavorites();
+        syncSearchPlaceholder();
         applySeasonMetadata(await loadSeason());
         try {
             await loadData(DATA_FILE);
