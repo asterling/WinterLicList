@@ -10,70 +10,48 @@
     const ALL_COURSES = ["appetizers", "main_dishes", "desserts"];
     const ALL_MEALS = ["Lunch", "Dinner"];
 
-    // Cuisine → emoji + gradient stops.
-    // Anything missing falls back to DEFAULT.
-    const CUISINE_META = {
-        Italian:        { emoji: "🍝", from: "#c0392b", to: "#7d1f12" },
-        Canadian:       { emoji: "🍁", from: "#d62828", to: "#7c1313" },
-        American:       { emoji: "🍔", from: "#2563eb", to: "#1e3a8a" },
-        "Comfort Food": { emoji: "🥧", from: "#b45309", to: "#7c2d12" },
-        Mediterranean: { emoji: "🫒", from: "#0d9488", to: "#115e59" },
-        Asian:         { emoji: "🥡", from: "#dc2626", to: "#7f1d1d" },
-        French:        { emoji: "🥐", from: "#7c3aed", to: "#3b0764" },
-        Indian:        { emoji: "🍛", from: "#ea580c", to: "#7c2d12" },
-        Japanese:      { emoji: "🍣", from: "#0f172a", to: "#1e293b" },
-        Sushi:         { emoji: "🍣", from: "#0f172a", to: "#1e293b" },
-        Seafood:       { emoji: "🦞", from: "#0369a1", to: "#0c4a6e" },
-        Bistro:        { emoji: "🍷", from: "#6d28d9", to: "#3b0764" },
-        Thai:          { emoji: "🌶️", from: "#16a34a", to: "#14532d" },
-        European:      { emoji: "🍽️", from: "#475569", to: "#1e293b" },
-        Steakhouse:    { emoji: "🥩", from: "#7f1d1d", to: "#450a0a" },
-        Korean:        { emoji: "🥢", from: "#0f172a", to: "#312e81" },
-        Mexican:       { emoji: "🌮", from: "#f59e0b", to: "#92400e" },
-        "Middle Eastern": { emoji: "🥙", from: "#a16207", to: "#713f12" },
-        Greek:         { emoji: "🇬🇷", from: "#1d4ed8", to: "#1e3a8a" },
-        British:       { emoji: "🇬🇧", from: "#1e3a8a", to: "#0c1e3f" },
-        Portuguese:    { emoji: "🐟", from: "#15803d", to: "#14532d" },
-        International: { emoji: "🌍", from: "#0891b2", to: "#155e75" },
-        Global:        { emoji: "🌍", from: "#0891b2", to: "#155e75" },
-        Vegan:         { emoji: "🥗", from: "#16a34a", to: "#14532d" },
-        Contemporary:  { emoji: "✨", from: "#334155", to: "#0f172a" },
-        Fusion:        { emoji: "🔀", from: "#9333ea", to: "#4c1d95" },
-        Spanish:       { emoji: "🥘", from: "#dc2626", to: "#7f1d1d" },
-        Caribbean:     { emoji: "🌴", from: "#0d9488", to: "#134e4a" },
-        Jamaican:      { emoji: "🌴", from: "#15803d", to: "#14532d" },
-        Chinese:       { emoji: "🥟", from: "#dc2626", to: "#7f1d1d" },
-        Argentinian:   { emoji: "🥩", from: "#0ea5e9", to: "#075985" },
-        Brazilian:     { emoji: "🥩", from: "#16a34a", to: "#14532d" },
-        "Latin American": { emoji: "🌶️", from: "#f59e0b", to: "#92400e" },
-        Barbeque:      { emoji: "🔥", from: "#b91c1c", to: "#7f1d1d" },
-        Southern:      { emoji: "🍗", from: "#a16207", to: "#713f12" },
-        Burmese:       { emoji: "🍜", from: "#dc2626", to: "#7c2d12" },
-        Malaysian:     { emoji: "🍜", from: "#dc2626", to: "#7c2d12" },
-        Moroccan:      { emoji: "🥙", from: "#b45309", to: "#7c2d12" },
-        "Iranian/Persian": { emoji: "🥙", from: "#a16207", to: "#713f12" },
-        "Eastern European": { emoji: "🥟", from: "#475569", to: "#1e293b" },
-        Georgian:      { emoji: "🥟", from: "#475569", to: "#1e293b" },
-        Ukrainian:     { emoji: "🥟", from: "#1d4ed8", to: "#1e3a8a" },
-        Venezuelan:    { emoji: "🫓", from: "#f59e0b", to: "#92400e" },
-        Dutch:         { emoji: "🧀", from: "#ea580c", to: "#7c2d12" },
-        Indonesian:    { emoji: "🍛", from: "#dc2626", to: "#7c2d12" },
-        "Cajun/Creole": { emoji: "🦐", from: "#b91c1c", to: "#7f1d1d" },
-        Peruvian:      { emoji: "🐟", from: "#dc2626", to: "#7c2d12" },
-        "Pacific-inspired": { emoji: "🌺", from: "#0d9488", to: "#134e4a" },
-        German:        { emoji: "🥨", from: "#a16207", to: "#713f12" },
-        Filipino:      { emoji: "🍢", from: "#dc2626", to: "#7c2d12" },
-        Egyptian:      { emoji: "🥙", from: "#b45309", to: "#7c2d12" },
-        Continental:   { emoji: "🍽️", from: "#475569", to: "#1e293b" },
-        Armenian:      { emoji: "🥙", from: "#a16207", to: "#713f12" },
-        Hakka:         { emoji: "🥟", from: "#dc2626", to: "#7c2d12" },
+    // Cuisine → emoji. The emoji carries the cuisine cue; card/modal header
+    // colors come from a small, unified palette (assigned per cuisine below) so
+    // the grid reads calm and intentional rather than as a rainbow.
+    const CUISINE_EMOJI = {
+        Italian: "🍝", Canadian: "🍁", American: "🍔", "Comfort Food": "🥧",
+        Mediterranean: "🫒", Asian: "🥡", French: "🥐", Indian: "🍛",
+        Japanese: "🍣", Sushi: "🍣", Seafood: "🦞", Bistro: "🍷", Thai: "🌶️",
+        European: "🍽️", Steakhouse: "🥩", Korean: "🥢", Mexican: "🌮",
+        "Middle Eastern": "🥙", Greek: "🇬🇷", British: "🇬🇧", Portuguese: "🐟",
+        International: "🌍", Global: "🌍", Vegan: "🥗", Contemporary: "✨",
+        Fusion: "🔀", Spanish: "🥘", Caribbean: "🌴", Jamaican: "🌴",
+        Chinese: "🥟", Argentinian: "🥩", Brazilian: "🥩", "Latin American": "🌶️",
+        Barbeque: "🔥", Southern: "🍗", Burmese: "🍜", Malaysian: "🍜",
+        Moroccan: "🥙", "Iranian/Persian": "🥙", "Eastern European": "🥟",
+        Georgian: "🥟", Ukrainian: "🥟", Venezuelan: "🫓", Dutch: "🧀",
+        Indonesian: "🍛", "Cajun/Creole": "🦐", Peruvian: "🐟",
+        "Pacific-inspired": "🌺", German: "🥨", Filipino: "🍢", Egyptian: "🥙",
+        Continental: "🍽️", Armenian: "🥙", Hakka: "🥟",
     };
-    const DEFAULT_META = { emoji: "🍽️", from: "#0056b3", to: "#003c80" };
+    const DEFAULT_EMOJI = "🍽️";
+
+    // Muted, warm earth tones + one quiet teal. White text reads on all four.
+    const HERO_PALETTE = [
+        { from: "#a8533a", to: "#6e3120" }, // terracotta
+        { from: "#3f6660", to: "#244039" }, // muted teal-stone
+        { from: "#574a41", to: "#322923" }, // warm espresso
+        { from: "#8a5a2e", to: "#5a3719" }, // deep ochre
+    ];
+
+    function paletteFor(name) {
+        let h = 0;
+        for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+        return HERO_PALETTE[h % HERO_PALETTE.length];
+    }
 
     function cuisineMeta(r) {
         const list = Array.isArray(r.cuisines) ? r.cuisines : [];
-        for (const c of list) if (CUISINE_META[c]) return { ...CUISINE_META[c], name: c };
-        return { ...DEFAULT_META, name: list[0] || "" };
+        let name = "";
+        for (const c of list) if (CUISINE_EMOJI[c]) { name = c; break; }
+        if (!name) name = list[0] || "";
+        const pal = paletteFor(name || "default");
+        return { emoji: CUISINE_EMOJI[name] || DEFAULT_EMOJI, from: pal.from, to: pal.to, name };
     }
 
     // ---------- State ----------
