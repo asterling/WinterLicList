@@ -613,6 +613,7 @@
                 if (v) activeVibes.add(v);
             });
         }
+        resyncSelects();
         updateActiveChip();
         renderActiveVibes();
         if (params.get("view") === "map") {
@@ -727,6 +728,86 @@
         [searchInput, cuisineFilter, neighbourhoodFilter, priceFilter, newFilter, vegFilter, favFilter,
          michelinFilter, lunchFilter, dinnerFilter, bookableFilter, sortBy]
             .forEach((el) => el.addEventListener(el === searchInput ? "input" : "change", filterRestaurants));
+
+        [sortBy, neighbourhoodFilter, priceFilter].forEach(enhanceSelect);
+    }
+
+    // Native <option> lists can't be styled, so replace the select's UI with a
+    // custom trigger + popover (the native <select> stays as the source of
+    // truth, so all existing value/change logic keeps working).
+    const CARET_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+    function enhanceSelect(select) {
+        if (select.__enhanced) return;
+        select.__enhanced = true;
+        const wrap = document.createElement("div");
+        wrap.className = "select-dd";
+        select.parentNode.insertBefore(wrap, select);
+        wrap.appendChild(select);
+        select.classList.add("visually-hidden");
+        select.setAttribute("tabindex", "-1");
+        select.setAttribute("aria-hidden", "true");
+
+        const trigger = document.createElement("button");
+        trigger.type = "button";
+        trigger.className = "select-dd-trigger";
+        trigger.setAttribute("aria-haspopup", "listbox");
+        trigger.setAttribute("aria-expanded", "false");
+        if (select.getAttribute("aria-label")) trigger.setAttribute("aria-label", select.getAttribute("aria-label"));
+        trigger.innerHTML = `<span class="select-dd-label"></span><span class="select-dd-caret" aria-hidden="true">${CARET_SVG}</span>`;
+        wrap.appendChild(trigger);
+
+        const pop = document.createElement("div");
+        pop.className = "select-dd-popover";
+        pop.setAttribute("role", "listbox");
+        wrap.appendChild(pop);
+
+        const labelEl = trigger.querySelector(".select-dd-label");
+        const syncLabel = () => {
+            const opt = select.options[select.selectedIndex];
+            labelEl.textContent = opt ? opt.textContent : "";
+        };
+        const close = () => { wrap.classList.remove("open"); trigger.setAttribute("aria-expanded", "false"); };
+        const open = () => {
+            pop.innerHTML = "";
+            Array.from(select.options).forEach((opt, i) => {
+                if (opt.disabled) return;
+                const o = document.createElement("button");
+                o.type = "button";
+                o.className = "select-dd-option" + (i === select.selectedIndex ? " active" : "");
+                o.setAttribute("role", "option");
+                o.textContent = opt.textContent;
+                o.addEventListener("click", () => {
+                    select.selectedIndex = i;
+                    select.dispatchEvent(new Event("change", { bubbles: true }));
+                    syncLabel();
+                    close();
+                    trigger.focus();
+                });
+                pop.appendChild(o);
+            });
+            wrap.classList.add("open");
+            trigger.setAttribute("aria-expanded", "true");
+            // Keep the popover on screen: flip/clamp if it would overflow either edge.
+            pop.style.left = ""; pop.style.right = ""; pop.style.maxWidth = "";
+            const vw = document.documentElement.clientWidth;
+            const margin = 8;
+            let r = pop.getBoundingClientRect();
+            if (r.right > vw - margin) { pop.style.left = "auto"; pop.style.right = "0"; }
+            r = pop.getBoundingClientRect();
+            if (r.left < margin) { pop.style.left = "0"; pop.style.right = "auto"; }
+            r = pop.getBoundingClientRect();
+            if (r.width > vw - margin * 2) { pop.style.maxWidth = (vw - margin * 2) + "px"; }
+        };
+        trigger.addEventListener("click", () => (wrap.classList.contains("open") ? close() : open()));
+        document.addEventListener("click", (e) => { if (!wrap.contains(e.target)) close(); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+
+        select.__syncLabel = syncLabel;
+        syncLabel();
+    }
+
+    function resyncSelects() {
+        [sortBy, neighbourhoodFilter, priceFilter].forEach((s) => s.__syncLabel && s.__syncLabel());
     }
 
     function appendOptions(selectEl, items) {
@@ -769,6 +850,7 @@
         bookableFilter.checked = false;
         sortBy.value = "default";
         activeVibes.clear();
+        resyncSelects();
         renderActiveVibes();
         updateActiveChip();
         filterRestaurants();
