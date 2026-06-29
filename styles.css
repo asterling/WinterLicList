@@ -7,6 +7,8 @@
     --font-display: "Fraunces", Georgia, "Times New Roman", serif;
     --ring: rgba(176, 83, 46, 0.18);
     --cta-glow: rgba(176, 83, 46, 0.22);
+    --tint: #f5e6d8;
+    --tint-text: #9a4623;
     --bg: #faf6f1;
     --surface: #ffffff;
     --surface-muted: #f4ede4;
@@ -31,6 +33,8 @@
     --fresh: #2dd4bf;
     --ring: rgba(224, 135, 92, 0.24);
     --cta-glow: rgba(0, 0, 0, 0.45);
+    --tint: rgba(224, 135, 92, 0.16);
+    --tint-text: #e9a079;
     --bg: #18140f;
     --surface: #211a14;
     --surface-muted: #2b231b;
@@ -308,12 +312,12 @@ header::after {
     border-color: rgba(168,85,247,0.30);
 }
 
-.vibe-tag { cursor: pointer; transition: background 0.15s; }
-.vibe-tag:hover { background: rgba(124,58,237,0.22); }
+.vibe-tag { cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.vibe-tag:hover { background: var(--tint); color: var(--tint-text); border-color: transparent; }
 .vibe-tag.active {
-    background: #7c3aed; color: #fff; border-color: #7c3aed;
+    background: var(--primary); color: #fff; border-color: var(--primary);
 }
-[data-theme="dark"] .vibe-tag.active { background: #a855f7; border-color: #a855f7; }
+[data-theme="dark"] .vibe-tag.active { background: var(--primary); border-color: var(--primary); color: #2a1a10; }
 .link-btn {
     background: none; border: none; color: var(--primary);
     cursor: pointer; font: inherit; font-weight: 600; font-size: 0.9rem;
@@ -350,57 +354,48 @@ header::after {
 /* ---------- Card ---------- */
 .card {
     background: var(--surface);
-    border-radius: var(--radius);
+    border-radius: 0 12px 12px 0;
     box-shadow: var(--shadow);
     overflow: hidden;
     display: flex; flex-direction: column;
     border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
     position: relative;
     transition: transform 0.18s, box-shadow 0.18s;
 }
 .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 
-.card-hero {
-    height: 110px;
-    background: linear-gradient(135deg, var(--c-from, #0056b3), var(--c-to, #003c80));
-    color: white;
-    position: relative;
+.card-head {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    padding: 1rem 1.1rem 0.5rem;
     cursor: pointer;
-    display: flex; align-items: center; padding: 1rem 1.2rem;
 }
-.card-hero::after {
-    content: ""; position: absolute; inset: 0;
-    background: radial-gradient(380px 120px at 110% 100%, rgba(255,255,255,0.18), transparent 65%);
-    pointer-events: none;
+.card-emoji-tile {
+    flex: none; width: 42px; height: 42px; border-radius: 10px;
+    background: var(--tint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; line-height: 1;
 }
-.card-emoji {
-    font-size: 2.5rem; margin-right: 0.8rem;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
-    flex-shrink: 0;
-}
-.card-hero h3 {
+.card-head-text { flex: 1; min-width: 0; }
+.card-head-text h3 {
     font-family: var(--font-display);
-    font-size: 1.3rem; font-weight: 600; line-height: 1.15;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-    z-index: 1; flex: 1; min-width: 0;
+    font-size: 1.3rem; font-weight: 600; line-height: 1.12; color: var(--text);
+    overflow-wrap: anywhere;
 }
-.card-hero-meta {
-    position: absolute; bottom: 0.6rem; right: 0.9rem; left: 0.9rem;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.78rem; opacity: 0.92; z-index: 1;
+.card-subtitle {
+    font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem;
 }
 
 .fav-btn {
-    position: absolute; top: 0.75rem; right: 0.75rem;
-    background: rgba(255,255,255,0.92); border: none; border-radius: 50%;
-    width: 34px; height: 34px;
+    flex: none;
+    background: transparent; border: none;
+    width: 30px; height: 30px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 1.3rem; color: #bbb;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    cursor: pointer; font-size: 1.3rem; color: var(--text-faint);
     transition: transform 0.18s, color 0.18s;
-    z-index: 5;
+    margin: -0.15rem -0.3rem 0 0;
 }
-.fav-btn:hover { transform: scale(1.1); }
+.fav-btn:hover { transform: scale(1.1); color: var(--heart); }
 .fav-btn.active { color: var(--heart); }
 
 .card-body { padding: 0.9rem 1.1rem 1.1rem; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; }
@@ -415,19 +410,12 @@ header::after {
 }
 .badge.hood     { background: #f3e5f5; color: #7b1fa2; border-color: transparent; }
 .badge.cuisine  { background: #e3f2fd; color: var(--primary); border-color: transparent; }
-.badge.michelin { background: #fff7e6; color: #b8860b; border-color: transparent; }
-.badge.veg      { background: #e6fffa; color: #2c7a7b; border-color: transparent; }
-.badge.access   { background: #ebf8ff; color: #2b6cb0; border-color: transparent; }
-.badge.hotel    { background: #fdf2f8; color: #be185d; border-color: transparent; }
-.badge.new-season { background: #fef3c7; color: #b45309; border-color: transparent; font-weight: 700; }
+.badge.michelin { background: #fbf0d8; color: #9a7b1e; border-color: transparent; }
+.badge.veg      { background: #e6f1ee; color: #2c7a6f; border-color: transparent; }
+.badge.new-season { background: var(--tint); color: var(--tint-text); border-color: transparent; }
 
-[data-theme="dark"] .badge.hood     { background: rgba(173,107,210,0.18); color: #d6a8f5; }
-[data-theme="dark"] .badge.cuisine  { background: rgba(106,169,255,0.18); color: #cfe1ff; }
 [data-theme="dark"] .badge.michelin { background: rgba(245,158,11,0.18); color: #ffd980; }
-[data-theme="dark"] .badge.veg      { background: rgba(16,185,129,0.18); color: #9bf0d2; }
-[data-theme="dark"] .badge.access   { background: rgba(106,169,255,0.18); color: #cfe1ff; }
-[data-theme="dark"] .badge.hotel    { background: rgba(190,24,93,0.20); color: #ffb6d3; }
-[data-theme="dark"] .badge.new-season { background: rgba(245,158,11,0.22); color: #ffe08a; }
+[data-theme="dark"] .badge.veg      { background: rgba(45,212,191,0.18); color: #9bf0d2; }
 
 .description-text {
     font-size: 0.88rem; color: var(--text-muted); line-height: 1.45;
@@ -615,18 +603,18 @@ header::after {
 
 .vibe-row { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .vibe-tag {
-    background: rgba(124,58,237,0.10);
-    color: #6b21a8;
-    border: 1px solid rgba(124,58,237,0.18);
+    background: var(--surface-muted);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
     border-radius: 999px;
     padding: 0.15rem 0.55rem;
     font-size: 0.72rem;
     font-weight: 600;
 }
 [data-theme="dark"] .vibe-tag {
-    background: rgba(168,85,247,0.18);
-    color: #d8b4fe;
-    border-color: rgba(168,85,247,0.30);
+    background: var(--surface-muted);
+    color: var(--text-muted);
+    border-color: var(--border);
 }
 
 .badge.vibe { background: rgba(255,255,255,0.18); color: #fff; border-color: rgba(255,255,255,0.30); }

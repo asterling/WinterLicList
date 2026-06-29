@@ -502,8 +502,7 @@
             labelEl.textContent = "All cuisines";
             cuisineTrigger.classList.remove("selected");
         } else {
-            const meta = CUISINE_META[value] || DEFAULT_META;
-            emojiEl.textContent = meta.emoji;
+            emojiEl.textContent = CUISINE_EMOJI[value] || DEFAULT_EMOJI;
             labelEl.textContent = value;
             cuisineTrigger.classList.add("selected");
         }
@@ -515,8 +514,7 @@
             ? cuisineList.filter((c) => c.name.toLowerCase().includes(query))
             : cuisineList;
         filtered.forEach(({ name, count }) => {
-            const meta = CUISINE_META[name] || DEFAULT_META;
-            rows.push({ name, count, emoji: meta.emoji, label: name });
+            rows.push({ name, count, emoji: CUISINE_EMOJI[name] || DEFAULT_EMOJI, label: name });
         });
 
         const grid = rows.map(({ name, count, emoji, label }) => chipHTML(name, label, count, emoji)).join("");
@@ -896,14 +894,15 @@
         const hood = Array.isArray(r.neighbourhoods) ? r.neighbourhoods[0] : r.neighbourhoods || "";
         const cuisineLabel = Array.isArray(r.cuisines) && r.cuisines.length ? r.cuisines[0] : "";
         const isFavorite = favorites.has(r.id);
+        const subtitle = [cuisineLabel, hood].filter(Boolean).join(" · ");
 
         const lunchP = r.Lunch && r.Lunch.price;
         const dinnerP = r.Dinner && r.Dinner.price;
 
+        // Cuisine + neighbourhood now live in the card subtitle, so the badge
+        // row carries only the meaningful flags.
         const badges = [];
         if (isNewThisSeason(r)) badges.push(`<span class="badge new-season" title="New to this festival">✨ New</span>`);
-        if (cuisineLabel) badges.push(`<span class="badge cuisine">${escapeHtml(cuisineLabel)}</span>`);
-        if (hood) badges.push(`<span class="badge hood">📍 ${escapeHtml(hood)}</span>`);
         if (r.__dist != null) badges.push(`<span class="badge distance" title="From your location">📏 ${escapeHtml(formatDistance(r.__dist))}</span>`);
         if (isMichelin(r)) badges.push(`<span class="badge michelin">⭐ Michelin</span>`);
         if (r.accessible_opt === "Yes") badges.push(`<span class="badge access" title="Wheelchair accessible">♿ Accessible</span>`);
@@ -946,16 +945,17 @@
         const card = document.createElement("div");
         card.className = "card";
         card.dataset.id = r.id;
-        card.style.setProperty("--c-from", meta.from);
-        card.style.setProperty("--c-to", meta.to);
         card.innerHTML = `
-            <button class="fav-btn ${isFavorite ? "active" : ""}" data-action="fav" aria-label="Toggle favorite" title="${isFavorite ? "Remove from favorites" : "Add to favorites"}">${isFavorite ? "❤" : "♡"}</button>
-            <div class="card-hero" data-action="open">
-                <div class="card-emoji">${meta.emoji}</div>
-                <h3>${escapeHtml(name)}</h3>
+            <div class="card-head" data-action="open">
+                <div class="card-emoji-tile">${meta.emoji}</div>
+                <div class="card-head-text">
+                    <h3>${escapeHtml(name)}</h3>
+                    ${subtitle ? `<div class="card-subtitle">${escapeHtml(subtitle)}</div>` : ""}
+                </div>
+                <button class="fav-btn ${isFavorite ? "active" : ""}" data-action="fav" aria-label="Toggle favorite" title="${isFavorite ? "Remove from favorites" : "Add to favorites"}">${isFavorite ? "❤" : "♡"}</button>
             </div>
             <div class="card-body">
-                <div class="badges-row">${badges.join("")}</div>
+                ${badges.length ? `<div class="badges-row">${badges.join("")}</div>` : ""}
                 ${vibeHtml}
                 ${descHtml}
                 ${standoutsHtml}
